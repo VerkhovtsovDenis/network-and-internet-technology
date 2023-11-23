@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+html
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+		title #{title} 
+		link(rel="stylesheet", href="css/bootstrap-reboot.min.css")
+		link(rel="stylesheet", href="css/main.css")
+		html(lang="ru")
+
+	mixin createMenu(menu, active)
+		each value, key in menu
+			if active == key
+				a.active(href= value)= key
+			else
+				a(href= value)= key
+
+	block variables
+		- var title = "Самые высокие здания и сооружения"
+		- var dictMenu = { "Главная": "index.html", "Небоскребы" : "#", "Башни": "#", "Список": "#"}
+		
+		- var listImages = ["image_1.jpg", "image_2.jpg", "image_3.jpg", "image_4.jpg", "image_5.jpg"]
+
+		- var listSections = [ { "header" : "Бурдж-Халифа в Дубае, ОАЭ", "image" : "image_6.jpg", "text" : "Небоскрёб высотой 828 метров, самое высокое сооружение в мире. Форма здания напоминает сталагмит."}, {"header" : "Токийское небесное дерево, Япония", "image" : "image_7.jpg", "text" : "Телевизионная башня в районе Сумида самая высокая среди телебашен мира. Высота телебашни вместе с антенной составляет 634 метра."},{"header" : "CN Tower, Канада", "image" : "image_8.jpg", "text" : "Си-Эн Тауэр  — самое высокое свободно стоящее сооружение в мире с 1976 по 2007 год. Его высота составляет 553,33 метра."} ]
+
+	body
+		header
+			h2= title
+		nav
+			+createMenu(dictMenu, 'Главная')
+		div.images
+			each pict in listImages
+				img(src= "img/" + pict)
+		article
+			each item in listSections
+				section
+					h3= item.header
+					img(src= "img/" + item.image)
+					p= item.text
+						a(href="#") &hellip;
+		footer
+			h4 &copy; Пример html-страницы
+
+
+
+		//- Scripts
+		script(src="js/jquery-3.5.1.min.js")
+		script(src="js/main.js")
