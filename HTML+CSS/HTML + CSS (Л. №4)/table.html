@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+	<div class="cover">
+		<div class="menu" align="center">
+			<a href="index.html">Главная</a>
+			<a href="table.html">Статистика</a>
+			<a href="about.html">О системах</a>
+			<a href="contact.html">Контакты</a>
+		</div>
+
+		<table>
+			<tr>
+				<th>ФИО</th>
+				<th>Пол</th>
+				<th>Возраст</th>
+				<th>Город</th>
+				<th>Результат теста 1 в %</th>
+				<th>Результат теста 2 в %</th>
+			</tr>
+			<tr>
+				<td>Иванов Иван</td>
+				<td>Мужской</td>
+				<td>25</td>
+				<td>Москва</td>
+				<td>80</td>
+				<td>85</td>
+			</tr>
+			<tr>
+				<td>Петрова Анна</td>
+				<td>Женский</td>
+				<td>30</td>
+				<td>Санкт-Петербург</td>
+				<td>75</td>
+				<td>90</td>
+			</tr>
+			<tr>
+				<td>Сидоров Сергей</td>
+				<td>Мужской</td>
+				<td>35</td>
+				<td>Новосибирск</td>
+				<td>70</td>
+				<td>80</td>
+			</tr>
+		</table>
+
+		<div class="content">
+
+			<div class="form1">
+				<form>
+					<fieldset>
+						<legend>Настройка визуализации данных</legend>
+						<p>
+							<label for="visualization_type">Тип визуализации:</label>
+							<select id="visualization_type">
+								<option value="bar_chart">Гистограмма</option>
+								<option value="line_chart">Линейный график</option>
+								<option value="pie_chart">Круговая диаграмма</option>
+							</select>
+
+							<br>
+							<b>По оси X:<br>
+								<input type="radio" name="gr_x" value="sex"> Пол <br>
+								<input type="radio" name="gr_x" value="age"> Возраст <br>
+								<input type="radio" name="gr_x" value="sity"> Город <br>
+								<br>
+
+								<b>По оси Y:<br>
+									<input type="checkbox" name="gr_y" value="test_1"> Тест 1 <br>
+									<input type="checkbox" name="gr_y" value="test_2"> Тест 2 <br>
+									<input type="checkbox" name="gr_y" value="average"> Средний результат <br>
+						</p>
+
+						<p>
+							<input type="submit" value="Применить">
+						</p>
+					</fieldset>
+				</form>
+			</div>
+
+		</div>
+
+		<form>
+			<label for="sort-by">Sort by:</label>
+			<select id="sort-by">
+				<option value="name">Name</option>
+				<option value="gender">Gender</option>
+				<option value="age">Age</option>
+				<option value="city">City</option>
+				<option value="test1">Test 1</option>
+				<option value="test2">Test 2</option>
+			</select>
+
+			<button type="submit">Sort</button>
+		</form>
+		<form>
+			<label for="filter-by">Filter by:</label>
+			<select id="filter-by">
+				<option value="gender">Gender</option>
+				<option value="city">City</option>
+				<option value="test1">Test 1</option>
+				<option value="test2">Test 2</option>
+			</select>
+			<input type="text" id="filter-value">
+			<button type="submit">Filter</button>
+		</form>
+
+		<form>
+			<label for="calculate-average">Calculate average:</label>
+			<select id="calculate-average">
+				<option value="test1">Test 1</option>
+				<option value="test2">Test 2</option>
+			</select>
+			<button type="submit">Calculate</button>
+			<output id="average-result"></output>
+
+
+	</div>
+
+
+
+</body>

@@ -1,0 +1,138 @@
+body
+	display: flex
+	flex-direction: column
+	margin 0px 10px 0px 10px
+	padding 0
+	box-sizing: border-box
+	font-family Roboto
+	border solid green 1px
+	min-height 100vh
+
+header
+	display flex
+	justify-content space-between
+
+header > h2
+	color grey
+	padding 10px
+	width 70vw
+
+.find-element
+	display flex
+	width 30vw
+	justify-content flex-end
+	align-items center
+
+.find-element > input
+	height 35px
+	width 60vw
+	margin 5px
+
+.find-element > img 
+	height 35px
+	margin 5px
+	padding 2px
+
+h1, h2, h3, p
+	margin 0
+
+
+.bg-image
+	overflow hidden
+
+
+.bg-image > img
+	width 100%
+	margin -290px 0 -460px 0;
+
+
+
+nav, div.images, section
+	box-shadow 4px 5px 10px rgba(0, 0, 0, 0.4)
+	background: #f1f1f1
+
+
+nav
+	display: flex
+	justify-content: end
+	height: 45px
+	font-family Roboto, cursive
+	margin 0% 0px 1% 0px
+
+nav>a
+	padding 10px
+	color grey
+	text-align center
+
+nav>.active
+	background #f94444
+	border solid grey 1px
+	color white
+
+div.images
+	padding 1% 1.5% 1% 1.5%
+	flex-wrap nowrap
+	height 100%
+
+div.images > img
+	width calc(20% - 10px)
+	margin 5px
+
+article
+	display flex
+	flex-wrap wrap
+	justify-content center
+	flex-grow 1
+
+section
+	width calc(50% - 10px)
+	margin-top 15px
+	margin-left 5px
+	margin-right 5px
+	
+	display flex
+	flex-wrap wrap
+	height 100%
+	align-items center
+
+section > h3
+	width 100%
+	text-align center
+	color grey
+	
+
+section > img
+	padding 10px
+	width 100%
+
+section > p
+	padding 3%
+	text-align justify
+	text-align-last center
+
+footer
+	flex-shrink 0
+
+@media screen and (max-width: 650px)
+	div.images
+		flex-wrap wrap
+		text-align center
+		padding 0%
+	div.images > img
+		width 95%
+	section
+		margin 5px 0px 5px 0px
+		
+@media screen and (max-width: 950px)
+	nav
+		flex-wrap wrap
+		height auto
+
+	nav>a
+		width 50%
+		border dashed LightGray 1px
+
+	section
+		width 100%
+		margin 5px 0px 5px 0px
+
