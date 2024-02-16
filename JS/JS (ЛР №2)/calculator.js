@@ -159,9 +159,9 @@ class CalculationManager {
         let error_b = Checker.check(b);
         let error_side = Checker.check(side);
 
-        Error.raise(error_a, side_component.a.span);
-        Error.raise(error_b, side_component.b.span);
-        Error.raise(error_side, side_component.side.span);
+        Error.raise(error_a, side_component.a);
+        Error.raise(error_b, side_component.b);
+        Error.raise(error_side, side_component.side);
 
         if (error_a | error_b | error_side) {
             alert("Критическая ошибка");
@@ -196,9 +196,9 @@ class CalculationManager {
         let error_b = Checker.check(b);
         let error_angle = Checker.check(angle);
 
-        Error.raise(error_a, angle_component.a.span);
-        Error.raise(error_b, angle_component.b.span);
-        Error.raise(error_angle, angle_component.angle.span);
+        Error.raise(error_a, angle_component.a);
+        Error.raise(error_b, angle_component.b);
+        Error.raise(error_angle, angle_component.angle);
 
         if (error_a | error_b | error_angle) {
             alert("Критическая ошибка");
@@ -226,7 +226,8 @@ class CalculationManager {
 
 class Error {
     static raise(message, object) {
-        object.textContent = message ? message : "";
+        object.span.textContent = message ? message : "";
+        object.input.style.border = message ? "1px solid red": "1px solid";
     }
 }
 
