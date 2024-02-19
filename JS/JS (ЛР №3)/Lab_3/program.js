@@ -31,9 +31,8 @@ let createTable = (data, idTable) => {
 
 let clearTable = (idTable) => {
     let tableElement = document.getElementById(idTable);
-    tableElement.innerHTML = '';
-}
-
+    tableElement.innerHTML = "";
+};
 
 let dataFilter = (dataForm) => {
     let dictFilter = {};
@@ -52,7 +51,6 @@ let dataFilter = (dataForm) => {
         if (item.type == "number") {
             if (valInput != "") {
                 valInput = Number(valInput);
-
             } else {
                 if (item.id.includes("From")) valInput = -Infinity;
                 if (item.id.includes("To")) valInput = Infinity;
@@ -81,7 +79,6 @@ let filterTable = (data, idTable, dataForm) => {
                 result &&= val.indexOf(datafilter[correspond[key]]) !== -1;
             }
             if (typeof val === "number") {
-                
                 let from = datafilter[correspond[key][0]];
                 let to = datafilter[correspond[key][1]];
 
@@ -121,19 +118,59 @@ let clearButton = document.getElementById("clearButton");
 
 clearButton.addEventListener("click", function () {
     let dataForm = document.getElementById("filter");
-
-
     let clearFilter = (dataForm, idTable) => {
         dataForm.reset();
         clearTable("list");
         createTable(buildings, "list");
-
     };
     clearFilter(dataForm, "list");
 });
 
+// формирование полей элемента списка с заданным текстом и значением
+let createOption = (str, val) => {
+    let item = document.createElement("option");
+    item.text = str;
+    item.value = val;
+    return item;
+};
 
+// формирование полей со списком из заголовков таблицы
+// параметры – массив из заголовков таблицы и элемент select
+8;
+let setSortSelect = (head, sortSelect) => {
+    // создаем OPTION Нет и добавляем ее в SELECT
+    sortSelect.append(createOption("Нет", 0));
+
+    // перебираем все ключи переданного элемента массива данных
+    for (let i in head) {
+        // создаем OPTION из очередного ключа и добавляем в SELECT
+        // значение атрибута VAL увеличиваем на 1, так как значение 0 имеет опция Нет
+        sortSelect.append(createOption(head[i], Number(i) + 1));
+    }
+};
+// формируем поля со списком для многоуровневой сортировки
+let setSortSelects = (data, dataForm) => {
+    // выделяем ключи словаря в массив
+    let head = Object.keys(data);
+    // находим все SELECT в форме
+    let allSelect = dataForm.getElementsByTagName("select");
+
+    for (let j = 0; j < allSelect.length; j++) {
+        //формируем опции очередного SELECT
+        setSortSelect(head, allSelect[j]);
+        //самостоятельно все SELECT, кроме первого, сделать неизменяемыми
+        if (j !== 0) {
+            allSelect[j].disabled = true;
+        }
+
+    }
+};
 
 document.addEventListener("DOMContentLoaded", function () {
     createTable(buildings, "list");
+
+    let data = buildings[0]; // Первый элемент массива buildings
+    let dataForm = document.getElementById('sort'); // Форма с настройкой сортировки
+    setSortSelects(data, dataForm);
+
 });

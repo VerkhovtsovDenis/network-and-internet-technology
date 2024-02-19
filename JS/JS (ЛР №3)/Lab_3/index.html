@@ -36,6 +36,22 @@
             <input type="button" id = "clearButton" value="Очистить фильтры" />
         </form>
 
+        <form id="sort">
+            <p> Сортировать по</p>
+            <p>
+            <select id="fieldsFirst">
+            </select>
+            по убыванию? <input type="checkbox" id="fieldsFirstDesc">
+            </p>
+            <p>
+            <select id="fieldsSecond">
+            </select>
+            по убыванию? <input type="checkbox" id="fieldsSecondDesc">
+            </p>
+            <input type="button" value="Сортировать">
+            <input type="button" value="Сбросить сортировку">
+            </form> 
+
         <table id="list"></table>
     </body>
     <script src="program.js"></script>
