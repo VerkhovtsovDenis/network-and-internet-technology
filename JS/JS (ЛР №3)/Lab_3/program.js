@@ -34,6 +34,29 @@ let clearTable = (idTable) => {
     tableElement.innerHTML = "";
 };
 
+// Функция для сброса сортировки
+let resetSorting = () => {
+    // Восстанавливаем поля формы для настройки сортировки
+    // let data = buildings[0]; // Первый элемент массива buildings
+    let dataForm = document.getElementById("sort"); // Форма с настройкой сортировки
+    // setSortSelects(data, dataForm);
+
+
+    // Обнуляем значения всех select
+    let allSelects = dataForm.getElementsByTagName("select");
+    for (let i = 0; i < allSelects.length; i++) {
+        allSelects[i].selectedIndex = 0; // Устанавливаем выбранный индекс на 0 (первый элемент - "Нет")
+    }
+
+
+    // Восстанавливаем исходную таблицу
+    let originalTable = document.getElementById("list");
+    originalTable.innerHTML = ""; // Очищаем текущую таблицу
+
+    // Восстанавливаем исходные данные и выводим таблицу на страницу
+    createTable(buildings, "list");
+};
+
 let dataFilter = (dataForm) => {
     let dictFilter = {};
     // перебираем все элементы формы с фильтрами
@@ -109,20 +132,26 @@ let filterTable = (data, idTable, dataForm) => {
 let searchButton = document.getElementById("searchButton");
 
 searchButton.addEventListener("click", function () {
+    resetSorting(); // Сброс уровней сортировки
     let dataForm = document.getElementById("filter");
     filterTable(buildings, "list", dataForm);
 });
 
-// Находим кнопку "Найти" по ее id
+// Находим кнопку "Очистить фильтры" по ее id
 let clearButton = document.getElementById("clearButton");
 
 clearButton.addEventListener("click", function () {
+    resetSorting(); // Сброс уровней сортировки
+
     let dataForm = document.getElementById("filter");
+
+
     let clearFilter = (dataForm, idTable) => {
         dataForm.reset();
         clearTable("list");
         createTable(buildings, "list");
     };
+
     clearFilter(dataForm, "list");
 });
 
@@ -136,7 +165,7 @@ let createOption = (str, val) => {
 
 // формирование полей со списком из заголовков таблицы
 // параметры – массив из заголовков таблицы и элемент select
-8;
+
 let setSortSelect = (head, sortSelect) => {
     // создаем OPTION Нет и добавляем ее в SELECT
     sortSelect.append(createOption("Нет", 0));
@@ -162,15 +191,109 @@ let setSortSelects = (data, dataForm) => {
         if (j !== 0) {
             allSelect[j].disabled = true;
         }
-
     }
+};
+
+// настраиваем поле для следующего уровня сортировки
+let changeNextSelect = (nextSelectId, curSelect) => {
+    let nextSelect = document.getElementById(nextSelectId);
+
+    nextSelect.disabled = false;
+
+    // в следующем SELECT выводим те же option, что и в текущем
+    nextSelect.innerHTML = curSelect.innerHTML;
+
+    if (curSelect.value != 0) {
+        nextSelect.remove(curSelect.value);
+    } else {
+        nextSelect.disabled = true;
+    }
+};
+
+let fieldsFirstButton = document.getElementById("fieldsFirst");
+
+fieldsFirstButton.onchange = function () {
+    changeNextSelect("fieldsSecond", fieldsFirstButton);
+};
+
+let createSortArr = (data) => {
+    let sortArr = [];
+
+    let sortSelects = data.getElementsByTagName("select");
+
+    for (let i = 0; i < sortSelects.length; i++) {
+        // получаем номер выбранной опции
+        let keySort = sortSelects[i].value;
+        // в случае, если выбрана опция Нет, заканчиваем формировать массив
+        if (keySort == 0) {
+            break;
+        }
+        // получаем номер значение флажка для порядка сортировки
+        // имя флажка сформировано как имя поля SELECT и слова Desc
+        let desc = document.getElementById(sortSelects[i].id + "Desc").checked;
+        sortArr.push({ column: keySort - 1, order: desc });
+    }
+    return sortArr;
+};
+
+let sortTable = (idTable, data) => {
+    let sortArr = createSortArr(data);
+
+    // сортировать таблицу не нужно, во всех полях выбрана опция Нет
+    if (sortArr.length === 0) {
+        return false;
+    }
+    //находим нужную таблицу
+    let table = document.getElementById(idTable);
+    // преобразуем строки таблицы в массив
+    let rowData = Array.from(table.rows);
+
+    // удаляем элемент с заголовками таблицы
+    rowData.shift();
+
+    //сортируем данные по возрастанию по всем уровням сортировки
+    rowData.sort((first, second) => {
+        for (let i in sortArr) {
+            let key = sortArr[i].column;
+            let order = sortArr[i].order;
+            if (first.cells[key].innerHTML > second.cells[key].innerHTML) {
+                return order ? -1 : 1;
+            } else if (
+                first.cells[key].innerHTML < second.cells[key].innerHTML
+            ) {
+                return order ? 1 : -1;
+            }
+        }
+        return 0;
+    });
+
+    //выводим отсортированную таблицу на страницу
+    table.innerHTML = table.rows[0].innerHTML;
+
+    rowData.forEach((item) => {
+        table.append(item);
+    });
+};
+
+let sortButton = document.getElementById("sortButton");
+
+sortButton.onclick = function () {
+    sortTable("list", document.getElementById("sort"));
+};
+
+
+
+// Пример использования resetSorting:
+let resetSortButton = document.getElementById("resetSortButton");
+
+resetSortButton.onclick = function () {
+    resetSorting();
 };
 
 document.addEventListener("DOMContentLoaded", function () {
     createTable(buildings, "list");
 
     let data = buildings[0]; // Первый элемент массива buildings
-    let dataForm = document.getElementById('sort'); // Форма с настройкой сортировки
+    let dataForm = document.getElementById("sort"); // Форма с настройкой сортировки
     setSortSelects(data, dataForm);
-
 });

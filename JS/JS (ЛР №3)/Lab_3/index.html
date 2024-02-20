@@ -5,52 +5,63 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <form id="filter">
-            <p>
-                <label for="structure">Название:</label>
-                <input type="text" id="structure" />
-            </p>
-            <p>
-                <label for="category">Тип:</label>
-                <input type="text" id="category" />
-            </p>
-            <p>
-                <label for="country">Страна:</label>
-                <input type="text" id="country" />
-            </p>
-            <p>
-                <label for="city">Город:</label>
-                <input type="text" id="city" />
-            </p>
-            <p>
-                <label for="yearFrom">Год: </label>
-                от <input type="number" id="yearFrom" /> до
-                <input type="number" id="yearTo" />
-            </p>
-            <p>
-                <label for="heightFrom">Высота:</label>
-                от <input type="number" id="heightFrom" /> до
-                <input type="number" id="heightTo" />
-            </p>
-            <input type="button" id = "searchButton" value="Найти" />
-            <input type="button" id = "clearButton" value="Очистить фильтры" />
-        </form>
+        <div class="content-grid">
+            <form id="filter">
+                <p class="box-1 col-2">
+                    <label for="structure">Название:</label>
+                    <input type="text" id="structure" />
+                </p>
+                <p class="box-2 col-2">
+                    <label for="category">Тип:</label>
+                    <input type="text" id="category" />
+                </p>
+                <p class="box-3 col-2">
+                    <label for="country">Страна:</label>
+                    <input type="text" id="country" />
+                </p>
+                <p class="box-4 col-2">
+                    <label for="city">Город:</label>
+                    <input type="text" id="city" />
+                </p>
+                <p class="box-5 col-3">
+                    <label for="yearFrom">Год: </label>
+                    от <input type="number" id="yearFrom" /> до
+                    <input type="number" id="yearTo" />
+                </p>
+                <p class="box-6 col-3">
+                    <label for="heightFrom">Высота:</label>
+                    от <input type="number" id="heightFrom" /> до
+                    <input type="number" id="heightTo" />
+                </p>
 
-        <form id="sort">
-            <p> Сортировать по</p>
-            <p>
-            <select id="fieldsFirst">
-            </select>
-            по убыванию? <input type="checkbox" id="fieldsFirstDesc">
-            </p>
-            <p>
-            <select id="fieldsSecond">
-            </select>
-            по убыванию? <input type="checkbox" id="fieldsSecondDesc">
-            </p>
-            <input type="button" value="Сортировать">
-            <input type="button" value="Сбросить сортировку">
-            </form> 
+                <p class="box-7 col-2">
+                    <input type="button" id="searchButton" value="Найти" />
+                    <input
+                        type="button"
+                        id="clearButton"
+                        value="Очистить фильтры"
+                    />
+                </p>
+            </form>
+
+            <form id="sort">
+                <p>Сортировать по</p>
+                <p>
+                    <select id="fieldsFirst"></select>
+                    по убыванию? <input type="checkbox" id="fieldsFirstDesc" />
+                </p>
+                <p>
+                    <select id="fieldsSecond"></select>
+                    по убыванию? <input type="checkbox" id="fieldsSecondDesc" />
+                </p>
+
+                <p>
+                    <input type="button" id="sortButton" value="Сортировать" />
+                    <input type="button" id="resetSortButton" value="Сбросить сортировку" />
+                </p>
+                
+            </form>
+        </div>
 
         <table id="list"></table>
     </body>
