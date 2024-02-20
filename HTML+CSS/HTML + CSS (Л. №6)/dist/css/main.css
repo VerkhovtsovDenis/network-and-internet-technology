@@ -1,0 +1,313 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px 0px 10px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto;
+  border: solid #008000 1px;
+  min-height: 100v;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+}
+header h2 {
+  color: #808080;
+  padding: 10px;
+  width: 70vw;
+}
+.base-search-item {
+  display: flex;
+  width: 30vw;
+  justify-content: flex-end;
+  align-items: center;
+}
+.base-search-item input {
+  height: 35px;
+  width: 60vw;
+  margin: 5px;
+}
+.base-search-item img {
+  height: 35px;
+  margin: 5px;
+  padding: 2px;
+}
+.base-search-item img:hover {
+  cursor: pointer;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+.t-bg-image {
+  overflow: hidden;
+  height: 15vh;
+}
+.t-bg-image img {
+  width: 100%;
+  margin: -300px 0 -460px 0;
+}
+nav,
+div.images,
+section,
+table,
+form {
+  box-shadow: 4px 5px 10px rgba(0,0,0,0.4);
+  background: #f1f1f1;
+}
+nav.m-nav {
+  display: flex;
+  justify-content: flex-end;
+  height: 45px;
+  font-family: Roboto, cursive;
+  margin: 0% 0px 1% 0px;
+}
+nav.m-nav a {
+  padding: 10px;
+  color: #808080;
+  text-align: center;
+  text-decoration: none;
+}
+nav.m-nav a:hover {
+  text-decoration: none;
+  color: #ffa500;
+}
+nav.m-nav a.active {
+  background: #f94444;
+  border: solid #808080 1px;
+  color: #fff;
+}
+div.images {
+  padding: 1% 1.5% 1% 1.5%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+div.images img {
+  width: calc(20% - 10px);
+  margin: 5px;
+}
+article {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-grow: 1;
+}
+article section {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(45% - 10px);
+  margin: 15px 5px 0px 5px;
+  height: 100%;
+  justify-content: center;
+  border-radius: 5%;
+}
+article section:hover {
+  background-color: #f1f1ff;
+}
+article section h3 {
+  width: 100%;
+  text-align: center;
+  color: #808080;
+}
+article section img {
+  padding: 10px;
+  max-height: 25vh;
+  min-height: 15vh;
+  border-radius: 5%;
+}
+article section p {
+  padding: 0.5% 3% 3% 3%;
+  text-align: justify;
+  -moz-text-align-last: center;
+  text-align-last: center;
+}
+footer {
+  flex-shrink: 0;
+}
+@media screen and (max-width: 650px) {
+  div.images {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 0%;
+  }
+  div.images img {
+    width: 95%;
+  }
+  section {
+    margin: 5px, 0px, 5px, 0px;
+  }
+}
+@media screen and (max-width: 950px) {
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+  }
+  nav a {
+    width: 50%;
+    border: dashed LightGray 1px;
+  }
+  section {
+    width: 100%;
+    margin: 5px, 0px, 5px, 0px;
+  }
+}
+article {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+article.l-special {
+  justify-content: space-between;
+}
+article .base-table {
+  width: 49vw;
+  border-bottom: 1px solid #ddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 5px;
+}
+article .base-table tr {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+article .base-table tr:hover {
+  background: #04aa6d;
+  color: #fff;
+}
+article .base-table th {
+  background-color: #04aa6d;
+  color: #fff;
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+article .base-table td {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+article .l-settings {
+  width: 47vw;
+  border: 1px solid;
+}
+article .l-settings .module-forms {
+  display: flex;
+  justify-content: space-around;
+}
+article .l-settings .module-forms form.v1 {
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 45%;
+}
+article .l-settings .module-forms form.v1 fieldset {
+  justify-content: flex-start;
+}
+article .l-settings .module-forms form.v1 fieldset.l-visualization {
+  width: 100%;
+}
+article .l-settings .module-forms form.v1 fieldset .base-axis_x,
+article .l-settings .module-forms form.v1 fieldset .base-axis_y,
+article .l-settings .module-forms form.v1 fieldset .base-axis_z {
+  text-align: center;
+}
+article .l-settings .module-forms form.v1 fieldset .l-inline {
+  display: flex;
+  width: 100%;
+}
+article .l-settings .module-forms form.v1 fieldset .l-inline input,
+article .l-settings .module-forms form.v1 fieldset .l-inline p {
+  padding-top: 3px;
+  margin-left: 10px;
+}
+article .l-settings .module-forms form.v2 {
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 45%;
+}
+article .l-settings .module-forms form.v2 .l-names {
+  text-align: center;
+}
+article .l-settings .module-forms form.v2 .l-names .l-inline {
+  display: flex;
+  width: 100%;
+}
+article .l-settings .module-forms form.v2 .l-names .l-inline input,
+article .l-settings .module-forms form.v2 .l-names .l-inline p {
+  padding-top: 3px;
+  margin-left: 10px;
+}
+article .l-settings img {
+  height: 30vh;
+  width: 47vw/3;
+  background: #fffdd0;
+}
+article .l-settings img:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transform: scale(3);
+}
+@media screen and (max-width: 600px) {
+  article {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  article .l-settings {
+    width: 100%;
+  }
+  article .l-settings .module-forms {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    display: flex;
+  }
+  article .l-settings .module-forms form.v1,
+  article .l-settings .module-forms form.v2 {
+    width: 100vw;
+  }
+  article .l-settings img {
+    width: 100%;
+  }
+}
+body article.l-about {
+  padding: 5px;
+}
+body article.l-about .t-content p.t-text {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  text-indent: 1.8%;
+  text-align: justify;
+  padding: 15px;
+}
+body article.l-about .base-image {
+  text-align: center;
+  padding: 5px;
+}
+body article.l-about .base-image:hover {
+  transform: scale(1.5);
+}

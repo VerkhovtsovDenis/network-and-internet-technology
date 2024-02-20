@@ -1,0 +1,104 @@
+article
+	margin-left 10px
+	margin-right 10px
+	&.l-special
+		justify-content space-between
+
+	.base-table
+		width 49vw
+		border-bottom $gap solid #ddd
+		user-select none
+		margin 5px
+
+		tr
+			padding 15px
+			text-align left
+			border-bottom $gap solid #ddd
+			user-select none
+			&:hover
+				background: #04AA6D
+				color: #fff
+
+		
+		th
+			background-color #04AA6D
+			color white
+			padding 15px
+			text-align left
+			border-bottom $gap solid #ddd
+			user-select none
+
+		td
+			padding-left 5px
+			padding-right 5px
+			padding-top 3px
+			padding-bottom 3px
+			text-align left
+			border-bottom $gap solid #ddd
+			user-select none
+	
+	.l-settings
+		width 47vw
+		border 1px solid 
+		.module-forms
+			display flex
+			justify-content: space-around;
+			forms(n=2)
+				padding 10px
+				margin-left 10px
+				margin-right 10px
+				width 45%
+
+			inline()
+				display flex
+				width 100%
+
+				input, p
+					padding-top 3px
+					margin-left 10px
+
+			form.v1
+				forms()
+				fieldset
+					justify-content flex-start
+
+					&.l-visualization
+						width 100%
+
+					.base-axis_x, .base-axis_y, .base-axis_z
+						text-align center
+
+					.l-inline
+						inline()
+			form.v2
+				forms()
+				.l-names
+					text-align: center
+					.l-inline
+						inline()
+
+		img
+			height 30vh
+			width @width/3
+			background #fffdd0
+			&:hover
+				position: absolute; top: 0px; left: 0px;  
+				transform scale(3)
+			
+
+@media screen and (max-width: 600px)
+	article
+		flex-mixin()
+		.l-settings
+			width 100%
+			.module-forms
+				flex-mixin()
+				flex-direction: row
+				display: flex
+				form.v1, form.v2
+					width: (@width)vw
+			img
+				width 100%
+			
+		
+	
