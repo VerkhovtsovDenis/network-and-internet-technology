@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Калькулятор</title>
+</head>
+<body>
+  <div class="calculator-container">
+    <h1>Калькулятор</h1>
+    
+    <div id="inputType">
+      <input type="radio" name="inputType" id="sideInput" checked>
+      <label for="sideInput">Основания и боковая сторона</label>
+      <input type="radio" name="inputType" id="angleInput">
+      <label for="angleInput">Основания и угол</label>
+    </div>
+
+    <div id="inputs-1">
+      <label for="base1">Основание 1:</label>
+      <input type="number" id="1-base1" required>
+      <span class="error" id="error-1-base1"></span>
+
+      <label for="base2">Основание 2:</label>
+      <input type="number" id="1-base2" required>
+      <span class="error" id="error-1-base2"></span>
+
+      <label for="side">Боковая сторона:</label>
+      <input type="number" id="side" required>
+      <span class="error" id="error-side"></span>
+      <div id = "photo">
+        <img src="img/img1.png" alt="">
+        <p>Рисунок 1 - Трапеция прямоугольная</p>
+      </div>
+    </div>
+
+    <div id="inputs-2">
+      <label for="base1">Основание 1:</label>
+      <input type="number" id="2-base1" required>
+      <span class="error" id="error-2-base1"></span>
+
+      <label for="base2">Основание 2:</label>
+      <input type="number" id="2-base2" required>
+      <span class="error" id="error-2-base2"></span>
+
+      <label for="angle">Угол (градусы):</label>
+      <input type="number" id="angle" required>
+      <span class="error" id="error-angle"></span>
+
+      <div id = photo>
+        <img src="img/img2.png" alt="">
+        <p>Рисунок 2 - Трапеция прямоугольная</p>
+      </div>
+    </div>
+    
+    <div id="calculations">
+      <label for="selectCharacteristic">Выберите вычисляемые характеристики:</label>
+      <select id="selectCharacteristics" multiple>
+        <option value="height">Высота</option>
+        <option value="diagonalsAngle">Угол между диагоналями</option>
+        <option value="diagonals">Диагонали</option>
+      </select>
+    </div>
+
+    <button id="showButton">Показать</button>
+    <button id="calculateButton">Вычислить</button>
+    <button id="clearButton">Очистить</button>
+
+    <div id="results"></div>
+  </div>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
