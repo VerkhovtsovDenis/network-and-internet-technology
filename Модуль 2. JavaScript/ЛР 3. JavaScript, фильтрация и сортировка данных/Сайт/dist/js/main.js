@@ -96,10 +96,10 @@ let dataFilter = (dataForm) => {
 
 let change_date = (val) => {
     let DD, MM, yyyy, arr;
-    arr = val.split('.');
-	DD = arr[2];
-	MM = arr[1];
-	yyyy = arr[0];
+    arr = val.split(".");
+    DD = arr[0];
+    MM = arr[1];
+    yyyy = arr[2];
     return `${yyyy}-${MM}-${DD}`;
 };
 
@@ -113,52 +113,42 @@ let filterTable = (data, idTable, dataForm) => {
         let set = [];
         for (let key in item) {
             let val = item[key];
+            console.log("Res:", key, val, typeof val);
 
-            // текстовые поля проверяем на вхождение
             if (typeof val == "string") {
-                if (key !== "Возраст") val = item[key].toLowerCase();
-                result &&= val.indexOf(datafilter[correspond[key]]) !== -1;
-                set.push(val.indexOf(datafilter[correspond[key]]) !== -1);
-            } else {
-                let from = datafilter[correspond[key][0]];
-                let to = datafilter[correspond[key][1]];
+                if (key !== "Возраст") {
+                    val = item[key].toLowerCase();
+                    result &&= val.indexOf(datafilter[correspond[key]]) !== -1;
+                    set.push(val.indexOf(datafilter[correspond[key]]) !== -1);
+                } else {
+                    let from = datafilter[correspond[key][0]];
+                    let to = datafilter[correspond[key][1]];
 
-				val = change_date(val.toString());
-				
-                if (from && to) {
-                    result &&= val >= from && val <= to;
-                    console.log(
-                        "->>>>>> ",
-                        result,
-                        val >= from && val <= to,
-                        val,
-                        from,
-                        to,
-                        typeof val,
-                        typeof from,
-                        typeof to
-                    );
-                    set.push(val >= from && val <= to);
-                } else if (from) {
-                    result &&= val >= from;
-                    set.push(val >= from);
-                } else if (to) {
-                    result &&= val <= to;
-                    set.push(val <= to);
-                    console.log(
-                        "->>>>>> ",
-                        result,
-                        val >= from && val <= to,
-                        val,
-                        from,
-                        to,
-                        typeof val,
-                        typeof from,
-                        typeof to
-                    );
+                    val = change_date(val.toString());
+					console.log(val);
+
+                    if (from && to) {
+                        result &&= val >= from && val <= to;
+                        console.log(
+                            "->>>>>> ",
+                            result,
+                            val >= from && val <= to,
+                            val,
+                            from,
+                            to,
+                            typeof val,
+                            typeof from,
+                            typeof to
+                        );
+                        set.push(val >= from && val <= to);
+                    } else if (from) {
+                        result &&= val >= from;
+                        set.push(val >= from);
+                    } else if (to) {
+                        result &&= val <= to; 
+                    }
                 }
             }
-
             if (typeof val === "number") {
                 let from = datafilter[correspond[key][0]];
                 let to = datafilter[correspond[key][1]];
@@ -174,8 +164,6 @@ let filterTable = (data, idTable, dataForm) => {
                     set.push(val <= parseFloat(to));
                 }
             }
-
-            set.push(val);
         }
         // console.log("Result:", set, datafilter); // Выводим результат фильтрации
         return result;
