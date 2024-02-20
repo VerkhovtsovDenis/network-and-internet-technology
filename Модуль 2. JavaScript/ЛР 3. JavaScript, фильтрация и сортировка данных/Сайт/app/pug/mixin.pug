@@ -1,0 +1,33 @@
+doctype html
+html
+    mixin createMenu(menu, active)
+            each value, key in menu
+                if active == key
+                    a.active(href= value)= key
+                else
+                    a(href= value)= key
+
+                
+    mixin createTable(title, table)
+        table#list
+
+
+
+    mixin createHeader(title, find_icon, cloud_icon)
+            header
+                h2= title
+                .base-search-item
+                    input(type="text")
+                    img(src=find_icon)
+            .t-bg-image
+                img(src=cloud_icon)
+    
+    mixin createFormAxis(labelText, inputType, inputName, inputData)
+        label=labelText
+        each info in inputData
+            .l-inline
+                input(type=inputType, name=inputName, value=info.value)
+                p=info.text
+
+    mixin createFooter()
+        h4 &copy; Пример html-страницы
