@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Лабораторная работа 4</title>
+        <script src="http://d3js.org/d3.v7.min.js"></script>
+        <style>
+            svg {
+                border: 1px solid grey;
+            }
+            form#setting{
+                display: grid;
+                grid-template-columns: 30% 20% 20%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <form id="setting">
+            <p>
+                Координаты рисунка<br />
+                <label for="cx">x: </label>
+                <input
+                    type="number"
+                    id="cx"
+                    value="300"
+                    max="600"
+                    min="0"
+                /><br/>
+                <label for="cy">y: </label>
+                <input type="number" id="cy" value="300" max="600" min="0" />
+            </p>
+            <p>
+                Масштаб<br />
+                <label for="x">по x: </label>
+                <input
+                    type="number"
+                    id="scaleX"
+                    value="2"
+                    max="25"
+                    min="0"
+                /><br/>
+                <label for="y">по y: </label>
+                <input
+                    type="number"
+                    id="scaleY"
+                    value="2"
+                    max="25"
+                    min="0"
+                /><br/>
+            </p>
+            <p>
+                Поворот<br />
+                <label for="x">угол: </label>
+                <input
+                    type="number"
+                    id="rotate"
+                    value="2"
+                    max="360"
+                    min="0"
+                /><br/>
+            </p>
+            <input type="button" id="draw" value="Нарисовать">
+            <input type="button" id="clear" value="Отчистить">
+    
+        </form>
+
+        <svg></svg>
+    </body>
+    <script src="program.js"></script>
+</html>
