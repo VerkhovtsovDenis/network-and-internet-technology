@@ -1,70 +1,123 @@
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Лабораторная работа 4</title>
-        <script src="http://d3js.org/d3.v7.min.js"></script>
-        <style>
-            svg {
-                border: 1px solid grey;
-            }
-            form#setting{
-                display: grid;
-                grid-template-columns: 30% 20% 20%;
-            }
+	<head>
+		<meta charset="utf-8" />
+		<title>Лабораторная работа 4</title>
+		<script src="http://d3js.org/d3.v7.min.js"></script>
+		<style>
+			svg {
+				border: 1px solid grey;
+			}
+			form#setting {
+				display: grid;
+				grid-template-columns: repeat(3, 250px);
+			}
+		</style>
+	</head>
+	<body>
+		<form id="setting">
+			<p>
+				Координаты рисунка<br />
+				<label for="cxFrom">x: </label>
+				<input
+					type="number"
+					id="cxFrom"
+					value="300"
+					max="600"
+					min="0"
+				/>
+				<label for="cxTo">до </label>
+				<input type="number" id="cxTo" value="550" max="600" min="0" />
+				<br />
+				
+				<label for="cyFrom">y: </label>
+				<input
+					type="number"
+					id="cyFrom"
+					value="300"
+					max="600"
+					min="0"
+				/>
 
-        </style>
-    </head>
-    <body>
-        <form id="setting">
-            <p>
-                Координаты рисунка<br />
-                <label for="cx">x: </label>
-                <input
-                    type="number"
-                    id="cx"
-                    value="300"
-                    max="600"
-                    min="0"
-                /><br/>
-                <label for="cy">y: </label>
-                <input type="number" id="cy" value="300" max="600" min="0" />
-            </p>
-            <p>
-                Масштаб<br />
-                <label for="x">по x: </label>
-                <input
-                    type="number"
-                    id="scaleX"
-                    value="2"
-                    max="25"
-                    min="0"
-                /><br/>
-                <label for="y">по y: </label>
-                <input
-                    type="number"
-                    id="scaleY"
-                    value="2"
-                    max="25"
-                    min="0"
-                /><br/>
-            </p>
-            <p>
-                Поворот<br />
-                <label for="x">угол: </label>
-                <input
-                    type="number"
-                    id="rotate"
-                    value="2"
-                    max="360"
-                    min="0"
-                /><br/>
-            </p>
-            <input type="button" id="draw" value="Нарисовать">
-            <input type="button" id="clear" value="Отчистить">
-    
-        </form>
+				<label for="cyTo">до </label>
+				<input type="number" id="cyTo" value="550" max="600" min="0" />
+				<br />
+			</p>
+			<p>
+				Масштаб<br />
+				<label for="scaleXFrom">по x: </label>
+				<input
+					type="number"
+					id="scaleXFrom"
+					value="1"
+					max="25"
+					min="0"
+				/>
+				<label for="scaleXTo">до </label>
+				<input
+					type="number"
+					id="scaleXTo"
+					value="1.5"
+					max="25"
+					min="0"
+				/><br />
+				<label for="scaleYFrom">по y: </label>
+				<input
+					type="number"
+					id="scaleYFrom"
+					value="1"
+					max="25"
+					min="0"
+				/>
+				<label for="scaleYTo">до </label>
+				<input
+					type="number"
+					id="scaleYTo"
+					value="1.5"
+					max="25"
+					min="0"
+				/><br />
+			</p>
+			<p>
+				Поворот<br />
+				<label for="rotateFrom">угол: </label>
+				<input
+					type="number"
+					id="rotateFrom"
+					value="0"
+					max="360"
+					min="0"
+				/><br />
+				<label for="rotateTo">до </label>
+				<input
+					type="number"
+					id="rotateTo"
+					value="180"
+					max="360"
+					min="0"
+				/>
+			</p>
+			<div>
+				<input type="button" id="draw" value="Нарисовать" /><br/>
+				<input type="button" id="animate" value="Анимировать" /><br/>
+				<input type="button" id="clear" value="Отчистить" />
+			</div>
+			<div>
+				<input
+					type="checkbox"
+					name="animation"
+					id="animation"
+					checked
+				/>
+				<label for="animation">Включить анимацию?</label>
+				<select name="animationType" id="animationType">
+					<option value="linear">linear</option>
+					<option value="elastic">elastic</option>
+					<option value="bounce">bounce</option>
+				</select>
+			</div>
+		</form>
 
-        <svg></svg>
-    </body>
-    <script src="program.js"></script>
+		<svg></svg>
+	</body>
+	<script src="program.js"></script>
 </html>
