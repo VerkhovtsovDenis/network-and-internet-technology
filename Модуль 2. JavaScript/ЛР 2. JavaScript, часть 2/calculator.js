@@ -78,6 +78,21 @@ const side_component = new SideParent(
     )
 );
 
+side_component.a.input.onclick = () => {
+    side_component.a.span.value = "";
+    Error.raise("", side_component.a)
+}
+
+side_component.b.input.onclick = () => {
+    side_component.b.span.value = "";
+    Error.raise("", side_component.b)
+}
+
+side_component.side.input.onclick = () => {
+    side_component.a.span.value = "";
+    Error.raise("", side_component.side)
+}
+
 const angle_component = new AngleParent(
     document.getElementById("inputs-2"),
     new HTMLItem(
@@ -93,6 +108,21 @@ const angle_component = new AngleParent(
         document.getElementById("error-angle")
     )
 );
+
+angle_component.a.input.onclick = () => {
+    angle_component.a.span.value = "";
+    Error.raise("", angle_component.a)
+}
+
+angle_component.b.input.onclick = () => {
+    angle_component.b.span.value = "";
+    Error.raise("", angle_component.b)
+}
+
+angle_component.angle.input.onclick = () => {
+    angle_component.angle.span.value = "";
+    Error.raise("", angle_component.angle)
+}
 
 class Changer {
     static isFirstActive = true;
@@ -163,6 +193,9 @@ class CalculationManager {
         Error.raise(error_b, side_component.b);
         Error.raise(error_side, side_component.side);
 
+        if (values.length == 0)
+            return -1;
+
         if (error_a | error_b | error_side) {
             alert("Критическая ошибка");
             return 0;
@@ -173,6 +206,8 @@ class CalculationManager {
         side = parseFloat(side);
 
         for (let i = 0; i < values.length; i++) {
+
+
             let func = eval(`CalculationManager.${values[i]}_by_side`);
             let res = func(a, b, side);
 
@@ -181,8 +216,10 @@ class CalculationManager {
                 alert(error);
                 return;
             }
+            newChildren = document.createElement("P");
+            newChildren.innerHTML = `${values[i]}: ${res}`;
+            document.getElementsByClassName("results").appendChild(newChildren.cloneNode(true));
 
-            alert(`${values[i]}: ${res}`);
         }
     }
 
@@ -199,6 +236,10 @@ class CalculationManager {
         Error.raise(error_a, angle_component.a);
         Error.raise(error_b, angle_component.b);
         Error.raise(error_angle, angle_component.angle);
+
+
+        if (values.length == 0)
+            return -1;
 
         if (error_a | error_b | error_angle) {
             alert("Критическая ошибка");
@@ -218,8 +259,10 @@ class CalculationManager {
                 alert(error);
                 return;
             }
+            newChildren = document.createElement("P");
+            newChildren.innerHTML = `${values[i]}: ${res}`;
+            document.getElementsByClassName("result").appendChild(newChildren.cloneNode(true));
 
-            alert(`${values[i]}: ${res}`);
         }
     }
 }
@@ -227,7 +270,7 @@ class CalculationManager {
 class Error {
     static raise(message, object) {
         object.span.textContent = message ? message : "";
-        object.input.style.border = message ? "1px solid red": "1px solid";
+        object.input.style.border = message ? "1px solid red" : "1px solid";
     }
 }
 
@@ -237,9 +280,22 @@ selectElement.addEventListener("change", (event) => {
 
 calculateButton.onclick = () => {
     let values = getSelectValues(selector);
-    return Changer.get_isFirstActive()
-        ? CalculationManager.calculate_by_side(values)
-        : CalculationManager.calculate_by_angle(values);
+    selectLabel = document.getElementsByClassName("lab-select")[0];
+    console.log()
+    if (values.length === 0) {
+        // Если нет выбранных характеристик, выделяем текст красным
+        selectLabel.classList.add('error-message');
+        return Changer.get_isFirstActive()
+            ? CalculationManager.calculate_by_side(values)
+            : CalculationManager.calculate_by_angle(values);
+    } else {
+        // Иначе убираем выделение
+        // selectLabel.style.color = ""
+        selectLabel.classList.remove('error-message');
+        return Changer.get_isFirstActive()
+            ? CalculationManager.calculate_by_side(values)
+            : CalculationManager.calculate_by_angle(values);
+    }
 };
 
 clearButton.onclick = () => {
@@ -269,3 +325,4 @@ function getSelectValues(select) {
     }
     return result;
 }
+

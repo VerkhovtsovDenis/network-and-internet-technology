@@ -37,6 +37,64 @@ let clearTable = (idTable) => {
     tableElement.innerHTML = "";
 };
 
+changeNextSelect = (nextSelectId, curSelect) => {
+    let nextSelect = document.getElementById(nextSelectId);
+
+    if (curSelect.selectedIndex === 0) {
+        let nextSelects = [];
+        if (curSelect.id === "fieldsFirst") {
+            nextSelects.push(document.getElementById("fieldsSecond"));
+            nextSelects.push(document.getElementById("fieldsThird"));
+        } else if (curSelect.id === "fieldsSecond") {
+            nextSelects.push(document.getElementById("fieldsThird"));
+        }
+
+        nextSelects.forEach(select => {
+            select.disabled = true;
+            select.selectedIndex = 0;
+        });
+
+    } else {
+        nextSelect.disabled = false;
+    }
+
+    nextSelect.innerHTML = '';
+    nextSelect.appendChild(createOption('Нет', 0));
+
+    Array.from(curSelect.options).forEach(option => {
+        if (option.value !== curSelect.value && option.value !== "0") {
+            nextSelect.appendChild(createOption(option.text, option.value));
+        }
+    });
+}
+
+let setSortSelects = (idTable) => {
+    let head = Object.keys(correspond)
+    let allSelect = document.getElementById('sort').getElementsByTagName('select');
+
+    for (let j = 0; j < allSelect.length; j++) {
+        setSortSelect(head, allSelect[j]);
+
+        allSelect[j].addEventListener('change', function() {
+            if (j + 1 < allSelect.length) {
+                changeNextSelect(allSelect[j + 1].id, allSelect[j]);
+            }
+        });
+
+        if (j > 0 && allSelect[j - 1].selectedIndex === 0) {
+            allSelect[j].disabled = true;
+        }
+    }
+}
+
+let setSortSelect = (head, sortSelect) => {
+    sortSelect.appendChild(createOption('Нет', 0));
+    head.forEach((item, index) => {
+        sortSelect.appendChild(createOption(item, index + 1));
+    });
+}
+
+
 // Функция для сброса сортировки
 let resetSorting = () => {
     // Восстанавливаем поля формы для настройки сортировки
@@ -208,67 +266,7 @@ let createOption = (str, val) => {
 // формирование полей со списком из заголовков таблицы
 // параметры – массив из заголовков таблицы и элемент select
 
-let setSortSelect = (head, sortSelect) => {
-    // создаем OPTION Нет и добавляем ее в SELECT
-    sortSelect.append(createOption("Нет", 0));
 
-    // перебираем все ключи переданного элемента массива данных
-    for (let i in head) {
-        // создаем OPTION из очередного ключа и добавляем в SELECT
-        // значение атрибута VAL увеличиваем на 1, так как значение 0 имеет опция Нет
-        sortSelect.append(createOption(head[i], Number(i) + 1));
-    }
-};
-// формируем поля со списком для многоуровневой сортировки
-let setSortSelects = (data, dataForm) => {
-    // выделяем ключи словаря в массив
-    let head = Object.keys(data);
-    // находим все SELECT в форме
-    let allSelect = dataForm.getElementsByTagName("select");
-
-    for (let j = 0; j < allSelect.length; j++) {
-        //формируем опции очередного SELECT
-        setSortSelect(head, allSelect[j]);
-        //самостоятельно все SELECT, кроме первого, сделать неизменяемыми
-        if (j !== 0) {
-            allSelect[j].disabled = true;
-        }
-    }
-};
-
-let changeNextSelect = (nextSelectId, selectArray) => {
-    selectArray.forEach((select) => {
-        let nextSelect = document.getElementById(nextSelectId);
-        nextSelect.disabled = false;
-
-        // Запоминаем текущее выбранное значение в следующем SELECT
-        let selectedValue = nextSelect.value;
-
-        // Очищаем следующий SELECT от всех опций
-        nextSelect.innerHTML = "";
-
-        // Создаем массив, включающий выбранные значения из предыдущих SELECT
-        let selectedValues = selectArray.map((sel) => sel.value);
-
-        // Добавляем опции из предыдущего SELECT, исключая уже выбранные опции
-        for (let option of select.options) {
-            if (!selectedValues.includes(option.value)) {
-                let newOption = document.createElement("option");
-                newOption.text = option.text;
-                newOption.value = option.value;
-                nextSelect.add(newOption);
-            }
-        }
-
-        // Устанавливаем выбранное значение, если оно осталось в списке
-        if (nextSelect.querySelector(`option[value="${selectedValue}"]`)) {
-            nextSelect.value = selectedValue;
-        } else {
-            nextSelect.selectedIndex = 0;
-            nextSelect.disabled = true;
-        }
-    });
-};
 
 let createSortArr = (data) => {
     let sortArr = [];
@@ -367,5 +365,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let data = raiting[0]; // Первый элемент массива buildings
     let dataForm = document.getElementById("sort"); // Форма с настройкой сортировки
-    setSortSelects(data, dataForm);
+    setSortSelects("list");
 });

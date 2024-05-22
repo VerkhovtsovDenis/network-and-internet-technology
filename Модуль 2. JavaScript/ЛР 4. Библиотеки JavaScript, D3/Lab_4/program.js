@@ -1,8 +1,3 @@
-//инициализация svg элемента
-
-// создаем изображение смайлик
-// рисуем его относительно точки (0, 0)
-
 class SVG {
 	constructor(width = 600, height = 600) {
 		this.width = width;
@@ -249,6 +244,9 @@ class Changer {
 let smilesArray = [];
 let my_svg = new SVG(600, 600);
 
+document.getElementById("clear").onclick = my_svg.clearSVG;
+document.getElementById("animation").onchange = Changer.change;
+
 document.getElementById("draw").onclick = function () {
 	smilesArray.push(new Smile(my_svg.getSVG(), new SettingsDraw()));
 };
@@ -256,8 +254,6 @@ document.getElementById("draw").onclick = function () {
 document.getElementById("animate").onclick = function () {
 	smilesArray.push(new Smile(my_svg.getSVG(), new SettingsAnimation()));
 };
-
-document.getElementById("clear").onclick = my_svg.clearSVG;
 
 document.addEventListener("DOMContentLoaded", function () {
 	let array = document.getElementsByTagName("label");
@@ -267,4 +263,3 @@ document.addEventListener("DOMContentLoaded", function () {
 	Changer.setAnimationComponent();
 });
 
-document.getElementById("animation").onchange = Changer.change;
