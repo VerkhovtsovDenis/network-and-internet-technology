@@ -1,25 +1,29 @@
-<script src="http://d3js.org/d3.v7.js"></script>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Лабораторная работа 4</title>
+        <script src="http://d3js.org/d3.v7.min.js"></script>
+        <style>
+            div {
+                height: 10px;
+            }
+            table {
+				border-collapse: collapse;
+			}
+        </style>
+        <!-- <meta http-equiv="refresh" content="5" /> -->
+    </head>
 
-<body>
-    <table border="1">
-      <thead>
-      <tr>
-        <th>Заголовок 1</th>
-        <th>Заголовок 2</th>
-      </tr>
-    </thead>
+    <body>
+        <table>
+            <thead></thead>
+            <tbody></tbody>
+        </table>
 
-    <tbody>
-      <tr>
-        <td>Ячейка 1,1</td>
-        <td>Ячейка 1,2</td>
-      </tr>
-      <tr>
-        <td>Ячейка 2,1</td>
-        <td>Ячейка 2,2</td>
-      </tr>
-    </tbody>
-    </table>
-</body>
+        <div></div>
 
-<script src="main.js"></script>
+        <input type="button" id="showTable" value="Показать таблицу" />
+        <input type="button" id="addValue" value="Добавить значения" />
+    </body>
+    <script src="main.js"></script>
+</html>
