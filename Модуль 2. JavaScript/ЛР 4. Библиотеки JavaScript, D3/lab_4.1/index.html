@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Лабораторная работа 4</title>
+        <script src="http://d3js.org/d3.v7.min.js"></script>
+        <style>
+            svg {
+                border: 1px solid grey;
+                height: 70%;
+                width: 100%;
+            }
+
+            form {
+                margin-top: 15px;
+            }
+            .inline {
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <svg></svg>
+
+        <form>
+            <div class="inline">
+                <input
+                    type="button"
+                    id="draw"
+                    value="Нарисовать"
+                />
+
+				<input type="radio" id="drawChoice1" name="figure" value="fox" />
+				<label for="drawChoice1">Лиса</label>
+		  
+				<input type="radio" id="drawChoice2" name="figure" value="raccoon" />
+				<label for="drawChoice2">Енот ;</label>
+                <p>Точка размещения: {200; 200}</p>
+            </div>
+
+            <input
+                type="button"
+                id="animate"
+                value="Анимировать рисунок"
+                class="inline"
+            />
+            <input type="button" id="clear" value="Отчистить" class="inline" />
+        </form>
+    </body>
+    <script src="program.js"></script>
+</html>
