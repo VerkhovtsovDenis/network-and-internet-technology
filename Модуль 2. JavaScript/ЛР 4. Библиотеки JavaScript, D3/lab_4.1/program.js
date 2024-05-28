@@ -22,26 +22,26 @@ class Draw {
         const nowY = this.nowY;
 
         // this.svg.attr("transform", null)
-
+        var alpha = d3.select('input#rotateValue')._groups[0][0].value
+        if(alpha == "")
+            alpha = 0
 
         this.svg.transition()
-
             .duration(duration * 0.2)
-            .attr("transform", `translate(${-200}, ${nowY - initialY})`)
+            .attr("transform", `translate(${-200}, ${nowY - initialY}) rotate(-${alpha/4}, ${nowX}, ${nowY})`)
             .transition()
             .duration(duration * 0.3)
-            .attr("transform", `translate(${-200 + 100}, ${nowY - initialY - 100})`)
+            .attr("transform", `translate(${-200 + 100}, ${nowY - initialY - 100}) rotate(-${alpha/2}, ${nowX}, ${nowY})`)
             .transition()
             .duration(duration * 0.3)
-            .attr("transform", `translate(${-200 + 100 - 100}, ${nowY - initialY - 100 - 100})`)
+            .attr("transform", `translate(${-200 + 100 - 100}, ${nowY - initialY - 100 - 100}) rotate(-${3*alpha/4}, ${nowX}, ${nowY})`)
             .transition()
             .duration(duration * 0.2)
-            .attr("transform", `translate(${-200 + 100 - 100 + 200}, ${nowY - initialY - 100 - 100})`)
+            .attr("transform", `translate(${-200 + 100 - 100 + 200}, ${nowY - initialY - 100 - 100}) rotate(-${alpha}, ${nowX}, ${nowY})`)
             .on("end", () => {
                 this.nowX = this.nowX;
                 this.nowY = this.nowY - 200;
 
-                console.log(this.centerX, this.centerY)
             });
     }
 }
@@ -428,4 +428,3 @@ d3.select("input#volume").on("change", function (event) {
 d3.select("#clear").on("click", function () {
     svg.selectAll("g").remove();
 });
-
