@@ -7,6 +7,8 @@ class Draw {
         this.svg = svg;
         this.centerX = centerX;
         this.centerY = centerY;
+        this.nowX = centerX;
+        this.nowY = centerY;
     }
 
     draw() {
@@ -14,30 +16,33 @@ class Draw {
     }
 
     animate(duration) {
-		console.log(123)
+        const initialX = this.centerX;
+        const initialY = this.centerY;
+        const nowX = this.nowX;
+        const nowY = this.nowY;
 
-        this.svg
-            .transition()
+        // this.svg.attr("transform", null)
+
+
+        this.svg.transition()
+
             .duration(duration * 0.2)
-            .attr("transform", `translate(${+200}, ${0})`)
-
-		this.centerX = this.centerX + 200
-
-        this.svg
+            .attr("transform", `translate(${-200}, ${nowY - initialY})`)
             .transition()
             .duration(duration * 0.3)
-            .attr("transform", `translate(${100}, ${-100})`)
-
-        this.svg
+            .attr("transform", `translate(${-200 + 100}, ${nowY - initialY - 100})`)
             .transition()
             .duration(duration * 0.3)
-            .attr("transform", `translate(${-100}, ${-100})`)
-
-        this.svg
+            .attr("transform", `translate(${-200 + 100 - 100}, ${nowY - initialY - 100 - 100})`)
             .transition()
             .duration(duration * 0.2)
-            .attr("transform", `translate(${-200}, ${0})`)
+            .attr("transform", `translate(${-200 + 100 - 100 + 200}, ${nowY - initialY - 100 - 100})`)
+            .on("end", () => {
+                this.nowX = this.nowX;
+                this.nowY = this.nowY - 200;
 
+                console.log(this.centerX, this.centerY)
+            });
     }
 }
 
@@ -57,10 +62,8 @@ class Raccoon extends Draw {
             .append("polygon")
             .attr(
                 "points",
-                `${this.centerX - 70},${this.centerY - 50} ${
-                    this.centerX - 30
-                },${this.centerY - 120} ${this.centerX - 30},${
-                    this.centerY - 50
+                `${this.centerX - 70},${this.centerY - 50} ${this.centerX - 30
+                },${this.centerY - 120} ${this.centerX - 30},${this.centerY - 50
                 }`
             )
             .style("fill", "gray");
@@ -69,10 +72,8 @@ class Raccoon extends Draw {
             .append("polygon")
             .attr(
                 "points",
-                `${this.centerX + 30},${this.centerY - 50} ${
-                    this.centerX + 30
-                },${this.centerY - 120} ${this.centerX + 70},${
-                    this.centerY - 50
+                `${this.centerX + 30},${this.centerY - 50} ${this.centerX + 30
+                },${this.centerY - 120} ${this.centerX + 70},${this.centerY - 50
                 }`
             )
             .style("fill", "gray");
@@ -139,8 +140,7 @@ class Raccoon extends Draw {
             .append("polygon")
             .attr(
                 "points",
-                `${this.centerX - 5},${this.centerY + 10} ${this.centerX + 5},${
-                    this.centerY + 10
+                `${this.centerX - 5},${this.centerY + 10} ${this.centerX + 5},${this.centerY + 10
                 } ${this.centerX},${this.centerY + 30}`
             )
             .style("fill", "black");
@@ -150,8 +150,7 @@ class Raccoon extends Draw {
             .append("path")
             .attr(
                 "d",
-                `M${this.centerX - 20},${this.centerY + 30} Q${this.centerX},${
-                    this.centerY + 50
+                `M${this.centerX - 20},${this.centerY + 30} Q${this.centerX},${this.centerY + 50
                 } ${this.centerX + 20},${this.centerY + 30}`
             )
             .style("fill", "none")
@@ -227,10 +226,8 @@ class Fox extends Draw {
             .append("polygon")
             .attr(
                 "points",
-                `${this.centerX - 60},${this.centerY - 20} ${
-                    this.centerX - 20
-                },${this.centerY - 110} ${this.centerX - 20},${
-                    this.centerY - 20
+                `${this.centerX - 60},${this.centerY - 20} ${this.centerX - 20
+                },${this.centerY - 110} ${this.centerX - 20},${this.centerY - 20
                 }`
             )
             .style("fill", "orange");
@@ -239,10 +236,8 @@ class Fox extends Draw {
             .append("polygon")
             .attr(
                 "points",
-                `${this.centerX + 20},${this.centerY - 20} ${
-                    this.centerX + 20
-                },${this.centerY - 110} ${this.centerX + 60},${
-                    this.centerY - 20
+                `${this.centerX + 20},${this.centerY - 20} ${this.centerX + 20
+                },${this.centerY - 110} ${this.centerX + 60},${this.centerY - 20
                 }`
             )
             .style("fill", "orange");
@@ -252,10 +247,8 @@ class Fox extends Draw {
             .append("polygon")
             .attr(
                 "points",
-                `${this.centerX - 50},${this.centerY - 20} ${
-                    this.centerX - 20
-                },${this.centerY - 80} ${this.centerX - 20},${
-                    this.centerY - 20
+                `${this.centerX - 50},${this.centerY - 20} ${this.centerX - 20
+                },${this.centerY - 80} ${this.centerX - 20},${this.centerY - 20
                 }`
             )
             .style("fill", "white");
@@ -264,10 +257,8 @@ class Fox extends Draw {
             .append("polygon")
             .attr(
                 "points",
-                `${this.centerX + 20},${this.centerY - 20} ${
-                    this.centerX + 20
-                },${this.centerY - 80} ${this.centerX + 50},${
-                    this.centerY - 20
+                `${this.centerX + 20},${this.centerY - 20} ${this.centerX + 20
+                },${this.centerY - 80} ${this.centerX + 50},${this.centerY - 20
                 }`
             )
             .style("fill", "white");
@@ -311,8 +302,7 @@ class Fox extends Draw {
             .append("polygon")
             .attr(
                 "points",
-                `${this.centerX - 5},${this.centerY + 30} ${this.centerX + 5},${
-                    this.centerY + 30
+                `${this.centerX - 5},${this.centerY + 30} ${this.centerX + 5},${this.centerY + 30
                 } ${this.centerX},${this.centerY + 50}`
             )
             .style("fill", "black");
@@ -322,8 +312,7 @@ class Fox extends Draw {
             .append("path")
             .attr(
                 "d",
-                `M${this.centerX - 20},${this.centerY + 50} Q${this.centerX},${
-                    this.centerY + 70
+                `M${this.centerX - 20},${this.centerY + 50} Q${this.centerX},${this.centerY + 70
                 } ${this.centerX + 20},${this.centerY + 50}`
             )
             .style("fill", "none")
@@ -384,8 +373,8 @@ class Fox extends Draw {
 }
 
 var point = {
-    x: 200,
-    y: 200,
+    x: 500,
+    y: 500,
 };
 
 svg.on("click", function (event) {
@@ -393,7 +382,7 @@ svg.on("click", function (event) {
     console.log("Координаты клика относительно SVG: ", x, y);
     point = { x: Math.round(x), y: Math.round(y) };
 
-    d3.select("p").text(`Точка размещения: {${point.x}; ${point.y}}`);
+    d3.select('label[for="volume"]').text(`Точка размещения: {${point.x}; ${point.y}}`);
 });
 
 var lastFigure = null;
@@ -417,15 +406,26 @@ d3.select("#draw").on("click", function () {
     }
 });
 
+
 d3.select("#animate").on("click", function () {
     if (
         lastFigure != null &&
         (lastFigure.constructor.name == "Raccoon" ||
             lastFigure.constructor.name == "Fox")
-    )
-        lastFigure.animate(2000);
+    ) {
+        var duration = d3.select('input#volume')._groups[0][0].value
+        lastFigure.animate(+duration);
+    }
+
 });
+
+d3.select("input#volume").on("change", function (event) {
+    d = event.target.value
+    d3.select('label#volume').text(`Длительность: ${+d} мс.`)
+
+})
 
 d3.select("#clear").on("click", function () {
     svg.selectAll("g").remove();
 });
+

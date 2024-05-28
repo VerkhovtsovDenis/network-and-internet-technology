@@ -1,53 +1,96 @@
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Лабораторная работа 4</title>
-        <script src="http://d3js.org/d3.v7.min.js"></script>
-        <style>
-            svg {
-                border: 1px solid grey;
-                height: 70%;
-                width: 100%;
-            }
 
-            form {
-                margin-top: 15px;
-            }
-            .inline {
-                display: flex;
-                flex-flow: row wrap;
-                align-items: center;
-                margin-top: 5px;
-            }
-        </style>
-    </head>
-    <body>
-        <svg></svg>
+<head>
+    <meta charset="utf-8" />
+    <title>Лабораторная работа 4</title>
+    <script src="http://d3js.org/d3.v7.min.js"></script>
+    <style>
+        svg {
+            border: 1px solid grey;
+            height: 70%;
+            width: 100%;
+        }
 
-        <form>
-            <div class="inline">
-                <input
-                    type="button"
-                    id="draw"
-                    value="Нарисовать"
-                />
+        form {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-				<input type="radio" id="drawChoice1" name="figure" value="fox" />
-				<label for="drawChoice1">Лиса</label>
-		  
-				<input type="radio" id="drawChoice2" name="figure" value="raccoon" />
-				<label for="drawChoice2">Енот ;</label>
-                <p>Точка размещения: {200; 200}</p>
-            </div>
+        .inline {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            margin-top: 5px;
+            justify-content: center;
+        }
 
-            <input
-                type="button"
-                id="animate"
-                value="Анимировать рисунок"
-                class="inline"
-            />
-            <input type="button" id="clear" value="Отчистить" class="inline" />
-        </form>
-    </body>
-    <script src="program.js"></script>
+        .inline input[type="button"] {
+            margin: 5px;
+        }
+
+        .inline input[type="radio"] {
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
+        .inline label {
+            margin-right: 10px;
+        }
+
+        #volume {
+            width: 300px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <svg></svg>
+
+    <form>
+        <div class="inline">
+            <input type="button" id="draw" value="Нарисовать" />
+
+            <input type="radio" id="drawChoice1" name="figure" value="fox" />
+            <label for="drawChoice1">Лиса</label>
+
+            <input type="radio" id="drawChoice2" name="figure" value="raccoon" />
+            <label for="drawChoice2">Енот</label>
+
+            <input type="range" id="volume" min="500" max="6000" step="500" value="3000">
+            <label id="volume">Длительность: 500 мс.</label>
+            <label for="volume">Точка размещения: {500; 500}</label>
+
+
+
+        </div>
+
+        <div class="inline">
+            <input type="button" id="animate" value="Анимировать рисунок" />
+            <input type="button" id="clear" value="Очистить" />
+        </div>
+    </form>
+
+    <form class="effects">
+
+        <div class="inline">
+            <input type="radio" id="scaleUp" name="scale" value="up" />
+            <label for="scaleUp">Увеличить</label>
+            <input type="radio" id="scaleDown" name="scale" value="down" />
+            <label for="scaleDown">Уменьшить</label>
+            <input type="number" id="scaleValue" placeholder="Коэффициент" />
+
+            <input type="checkbox" id="rotateCheck" />
+            <label for="rotateCheck">Вращение</label>
+            <input type="number" id="rotateValue" placeholder="Угол (°)" />
+        </div>
+
+    </form>
+
+</body>
+<script src="program.js"></script>
+
 </html>

@@ -13,12 +13,15 @@ add = [
     },
 ];
 
+// Сортировка
 let compareByTitle = (a, b) => {
     return a.rate < b.rate ? -1 : 1;
 };
 
+// Получаем таблицу для манипуляций
 let table = d3.select("table");
 
+// добавляем 4 пустых тека в таблицу 
 let rows = table
     .select("tbody")
     .selectAll("tr")
@@ -26,6 +29,7 @@ let rows = table
     .enter()
     .append("tr");
 
+// 
 let cells = rows
     .selectAll("td")
     .data((d) => Object.values(d))
@@ -41,28 +45,31 @@ let head = table
     .append("td")
     .text((d) => d);
 
-browsers = [...browsers, ...add];
-console.log(browsers);
 
-rows = table
-    .select("tbody")
-    .selectAll("tr")
-    .data(browsers)
-    .enter()
-    .append("tr");
 
-cells = rows
-    .selectAll("td")
-    .data((d) => Object.values(d))
-    .enter()
-    .append("td")
-    .text((d) => d)
-    .sort(compareByTitle)
 
-let sort = d3
-    .select("table")
-    .select("tbody")
-    .selectAll("tr")
-    .sort(compareByTitle);
+
+// неверный код
+// browsers = [...browsers, ...add];
+// rows = table
+//     .select("tbody")
+//     .selectAll("tr")
+//     .data(browsers)
+//     .enter()
+//     .append("tr");
+
+// cells = rows
+//     .selectAll("td")
+//     .data((d) => Object.values(d))
+//     .enter()
+//     .append("td")
+//     .text((d) => d)
+//     .sort(compareByTitle)
+
+// let sort = d3
+//     .select("table")
+//     .select("tbody")
+//     .selectAll("tr")
+//     .sort(compareByTitle);
 
 // browsers = browsers.sort();
