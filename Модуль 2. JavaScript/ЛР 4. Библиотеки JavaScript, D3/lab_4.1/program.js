@@ -9,6 +9,10 @@ class Draw {
         this.centerY = centerY;
         this.nowX = centerX;
         this.nowY = centerY;
+        this.angle = 0
+
+        this.svg.attr("transform-origin", "center,center")
+
     }
 
     draw() {
@@ -16,34 +20,36 @@ class Draw {
     }
 
     animate(duration) {
-        const initialX = this.centerX;
         const initialY = this.centerY;
-        const nowX = this.nowX;
         const nowY = this.nowY;
 
         // this.svg.attr("transform", null)
         var alpha = d3.select('input#rotateValue')._groups[0][0].value
-        if(alpha == "")
-            alpha = 0
+        if (alpha == "")
+            alpha = 90
+        // this.svg.transition()
+        //     .duration(duration)
+        //     .attr("transform", `rotate(${this.angle + alpha})`)
+        // .attr("transform", `translate(${-200}, ${nowY - initialY}) rotate(-${alpha/4}, ${nowX}, ${nowY})`)
 
         this.svg.transition()
             .duration(duration * 0.2)
-            .attr("transform", `translate(${-200}, ${nowY - initialY}) rotate(-${alpha/4}, ${nowX}, ${nowY})`)
+            .attr("transform", `translate(${-200}, ${nowY - initialY})`)
             .transition()
             .duration(duration * 0.3)
-            .attr("transform", `translate(${-200 + 100}, ${nowY - initialY - 100}) rotate(-${alpha/2}, ${nowX}, ${nowY})`)
+            .attr("transform", `translate(${-100}, ${nowY - initialY - 100})`)
             .transition()
             .duration(duration * 0.3)
-            .attr("transform", `translate(${-200 + 100 - 100}, ${nowY - initialY - 100 - 100}) rotate(-${3*alpha/4}, ${nowX}, ${nowY})`)
+            .attr("transform", `translate(${-200}, ${nowY - initialY - 100 - 100})`)
             .transition()
             .duration(duration * 0.2)
-            .attr("transform", `translate(${-200 + 100 - 100 + 200}, ${nowY - initialY - 100 - 100}) rotate(-${alpha}, ${nowX}, ${nowY})`)
+            .attr("transform", `translate(${0}, ${nowY - initialY - 100 - 100})`)
             .on("end", () => {
-                this.nowX = this.nowX;
                 this.nowY = this.nowY - 200;
+                this.angle += alpha
+            })
+        }
 
-            });
-    }
 }
 
 class Raccoon extends Draw {
@@ -428,3 +434,17 @@ d3.select("input#volume").on("change", function (event) {
 d3.select("#clear").on("click", function () {
     svg.selectAll("g").remove();
 });
+
+function preset(num) {
+    if (num == 1) {
+        var svgContainer = svg.append("g");
+
+        lastFigure = new Fox(svgContainer, point.x, point.y)
+        lastFigure.draw()
+
+    } else (
+        console.log("Ошибка пресета")
+    )
+}
+
+preset(1)

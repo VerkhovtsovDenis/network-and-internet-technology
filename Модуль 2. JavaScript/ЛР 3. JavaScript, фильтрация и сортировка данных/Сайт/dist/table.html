@@ -1,222 +1,229 @@
+<html>
 
-<html> 
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title></title>
-    <link rel="stylesheet" href="css/bootstrap-reboot.min.css"/>
-    <link rel="stylesheet" href="css/main.css"/><!DOCTYPE html>
-    <html>
-    </html><!DOCTYPE html>
-    <html>
-    </html>
-  </head>
-  <body>
-          <header>
-            <h2>Learner’s Cloud - Учиться. Развиваться. Достигать</h2>
-            <div class="base-search-item">
-              <input type="text"><img src="img/img_find.png">
-            </div>
-          </header>
-          <div class="t-bg-image"><img src="img/bg_cloud.jpg"></div>
-  </body>
-  <nav class="m-nav"><a href="index.html">Главная</a><a class="active" href="table.html">Статистика</a><a href="about.html">О системах</a><a href="contacts.html">Контакты</a>
-  </nav>
-  <article class="l-special">
-    <div class="base-table">
-            <table id="list"></table>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap-reboot.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <!DOCTYPE html>
+  <html>
+
+  </html>
+  <!DOCTYPE html>
+  <html>
+
+  </html>
+</head>
+
+<body>
+  <header>
+    <h2>Learner’s Cloud - Учиться. Развиваться. Достигать</h2>
+    <div class="base-search-item">
+      <input type="text"><img src="img/img_find.png">
     </div>
-    <div class="l-settings">
-      <div class="module-forms">
-        <form id="filter">
-          <p class="col-2">
-            <lable>ФИО</lable>
-            <input id="name" type="text">
-          </p>
-          <p class="col-2">
-            <lable>Пол</lable>
-            <input id="sex" type="text">
-          </p>
-          <p class="col-2">
-            <lable>Город</lable>
-            <input id="sity" type="text">
-          </p>
-          <div class="col-5">
-            <label>Возраст</label>
-            <p>От</p>
-            <input id="date_bFrom" type="date" min="1930-01-01" max="2025-01-01" value="1930-01-01">
-            <p>До</p>
-            <input id="date_bTo" type="date" min="1930-01-01" max="2025-01-01" value="2025-01-01">
+  </header>
+  <div class="t-bg-image"><img src="img/bg_cloud.jpg"></div>
+</body>
+<nav class="m-nav"><a href="index.html">Главная</a><a class="active" href="table.html">Статистика</a><a
+    href="about.html">О системах</a><a href="contacts.html">Контакты</a>
+</nav>
+<article class="l-special">
+  <div class="base-table">
+    <table id="list"></table>
+  </div>
+  <div class="l-settings">
+    <div class="module-forms">
+      <form id="filter">
+        <p class="col-2">
+          <lable>ФИО</lable>
+          <input id="name" type="text">
+        </p>
+        <p class="col-2">
+          <lable>Пол</lable>
+          <input id="sex" type="text">
+        </p>
+        <p class="col-2">
+          <lable>Город</lable>
+          <input id="sity" type="text">
+        </p>
+        <div class="col-5">
+          <label>Возраст</label>
+          <p>От</p>
+          <input id="date_bFrom" type="date" min="1930-01-01" max="2025-01-01" value="1930-01-01">
+          <p>До</p>
+          <input id="date_bTo" type="date" min="1930-01-01" max="2025-01-01" value="2025-01-01">
+        </div>
+        <div class="col-5">
+          <label>Результаты теста 1</label>
+          <p>От</p>
+          <input id="test1From" type="number">
+          <p>До</p>
+          <input id="test1To" type="number">
+        </div>
+        <div class="col-5">
+          <label>Результаты теста 2</label>
+          <p>От</p>
+          <input id="test2From" type="number">
+          <p>До</p>
+          <input id="test2To" type="number">
+        </div>
+        <p class="col-2">
+          <label>Оценка</label>
+          <input id="result" type="text">
+        </p>
+        <p class="col-2">
+          <input id="searchButton" type="button" value="Найти">
+          <input id="clearButton" type="button" value="Отчистить фильтр">
+        </p>
+      </form>
+      <form id="sort">
+        <p>Сортировать по</p>
+        <div>
+          <select id="fieldsFirst"></select>
+          <p>По убыванию?</p>
+          <input id="fieldsFirstDesc" type="checkbox">
+        </div>
+        <div>
+          <select id="fieldsSecond"></select>
+          <p>По убыванию?</p>
+          <input id="fieldsSecondDesc" type="checkbox">
+        </div>
+        <div>
+          <select id="fieldsThird"></select>
+          <p>По убыванию?</p>
+          <input id="fieldsThirdDesc" type="checkbox">
+        </div>
+        <input id="sortButton" type="button" value="Сортировать">
+        <input id="resetSortButton" type="button" value="Сбросить сортировку">
+      </form>
+      <form class="v1" action="visualizations-graphics">
+        <fieldset>
+          <legend>Настройка визуализации Графика</legend>
+          <div class="l-visualization">
+            <label>Тип визуализации</label>
+            <select id="type" name="type">
+              <option value="bar">Гистограмма</option>
+              <option value="line">Линейный график</option>
+              <option value="pie">Круговая диаграмма</option>
+            </select>
           </div>
-          <div class="col-5">
-            <label>Результаты теста 1</label>
-            <p>От</p>
-            <input id="test1From" type="number">
-            <p>До</p>
-            <input id="test1To" type="number">
-          </div>
-          <div class="col-5">
-            <label>Результаты теста 2</label>
-            <p>От</p>
-            <input id="test2From" type="number">
-            <p>До</p>
-            <input id="test2To" type="number">
-          </div>
-          <p class="col-2">
-            <label>Оценка</label>
-            <input id="result" type="text">
-          </p>
-          <p class="col-2"> 
-            <input id="searchButton" type="button" value="Найти">
-            <input id="clearButton" type="button" value="Отчистить фильтр">
-          </p>
-        </form>
-        <form id="sort">
-          <p>Сортировать по</p>
-          <div>
-            <select id="fieldsFirst"></select>
-            <p>По убыванию?</p>
-            <input id="fieldsFirstDesc" type="checkbox">
-          </div>
-          <div>
-            <select id="fieldsSecond"></select>
-            <p>По убыванию?</p>
-            <input id="fieldsSecondDesc" type="checkbox">
-          </div>
-          <div>
-            <select id="fieldsThird"></select>
-            <p>По убыванию?</p>
-            <input id="fieldsThirdDesc" type="checkbox">
-          </div>
-          <input id="sortButton" type="button" value="Сортировать">
-          <input id="resetSortButton" type="button" value="Сбросить сортировку">
-        </form>
-        <form class="v1" action="visualizations-graphics">
-          <fieldset> 
-            <legend>Настройка визуализации Графика</legend>
-            <div class="l-visualization">
-              <label>Тип визуализации</label>
-              <select id="type" name="type">
-                <option value="bar">Гистограмма</option>
-                <option value="line">Линейный график</option>
-                <option value="pie">Круговая диаграмма</option>
-              </select>
+          <div class="base-axis_x">
+            <label>Выбор оси Х</label>
+            <div class="l-inline">
+              <input type="radio" name="groupX" value="sex">
+              <p>Пол</p>
             </div>
-            <div class="base-axis_x">
-                    <label>Выбор оси Х</label>
-                    <div class="l-inline">
-                      <input type="radio" name="groupX" value="sex">
-                      <p>Пол</p>
-                    </div>
-                    <div class="l-inline">
-                      <input type="radio" name="groupX" value="age">
-                      <p>Возраст</p>
-                    </div>
-                    <div class="l-inline">
-                      <input type="radio" name="groupX" value="sity">
-                      <p>Город</p>
-                    </div>
+            <div class="l-inline">
+              <input type="radio" name="groupX" value="age">
+              <p>Возраст</p>
             </div>
-            <div class="base-axis_y">
-                    <label>Выбор оси Y</label>
-                    <div class="l-inline">
-                      <input type="checkbox" name="groupY" value="text1">
-                      <p>Результаты теста №1</p>
-                    </div>
-                    <div class="l-inline">
-                      <input type="checkbox" name="groupY" value="test2">
-                      <p>Результаты теста №2</p>
-                    </div>
-                    <div class="l-inline">
-                      <input type="checkbox" name="groupY" value="great">
-                      <p>Оценка</p>
-                    </div>
+            <div class="l-inline">
+              <input type="radio" name="groupX" value="sity">
+              <p>Город</p>
             </div>
-            <div class="base-axis_z">
-                    <label>Функция к данным</label>
-                    <div class="l-inline">
-                      <input type="radio" name="groupY" value="min">
-                      <p>Миниимум</p>
-                    </div>
-                    <div class="l-inline">
-                      <input type="radio" name="groupY" value="max">
-                      <p>Максимум</p>
-                    </div>
-                    <div class="l-inline">
-                      <input type="radio" name="groupY" value="sum">
-                      <p>Сумма</p>
-                    </div>
-                    <div class="l-inline">
-                      <input type="radio" name="groupY" value="middle">
-                      <p>Среднее</p>
-                    </div>
+          </div>
+          <div class="base-axis_y">
+            <label>Выбор оси Y</label>
+            <div class="l-inline">
+              <input type="checkbox" name="groupY" value="text1">
+              <p>Результаты теста №1</p>
             </div>
-          </fieldset>
-        </form>
-        <form class="v2" action="visualizations-tables">
-          <fieldset> 
-            <legend>Параметры отображения таблицы</legend>
-            <div class="l-visualization">
-              <label>Сортировка 1 по</label>
-              <select id="type" name="type">
-                <option value="ФИО">ФИО</option>
-                <option value="Пол">Пол</option>
-                <option value="Город">Город</option>
-                <option value="Возраст">Возраст</option>
-                <option value="Результаты теста 1">Результаты теста 1</option>
-                <option value="Результаты теста 2">Результаты теста 2</option>
-                <option value="Оценка">Оценка</option>
-              </select><br>
-              <label>Сортировка 2 по</label>
-              <select id="type" name="type">
-                <option value="ФИО">ФИО</option>
-                <option value="Пол">Пол</option>
-                <option value="Город">Город</option>
-                <option value="Возраст">Возраст</option>
-                <option value="Результаты теста 1">Результаты теста 1</option>
-                <option value="Результаты теста 2">Результаты теста 2</option>
-                <option value="Оценка">Оценка</option>
-              </select>
-              <div class="l-names">
-                <label>Какие поля отображать?</label>
-                <div class="l-inline">
-                  <input type="checkbox" name="vis" value="ФИО" checked>
-                  <p>ФИО</p>
-                </div>
-                <div class="l-inline">
-                  <input type="checkbox" name="vis" value="Пол" checked>
-                  <p>Пол</p>
-                </div>
-                <div class="l-inline">
-                  <input type="checkbox" name="vis" value="Город" checked>
-                  <p>Город</p>
-                </div>
-                <div class="l-inline">
-                  <input type="checkbox" name="vis" value="Возраст" checked>
-                  <p>Возраст</p>
-                </div>
-                <div class="l-inline">
-                  <input type="checkbox" name="vis" value="Результаты теста 1" checked>
-                  <p>Результаты теста 1</p>
-                </div>
-                <div class="l-inline">
-                  <input type="checkbox" name="vis" value="Результаты теста 2" checked>
-                  <p>Результаты теста 2</p>
-                </div>
-                <div class="l-inline">
-                  <input type="checkbox" name="vis" value="Оценка" checked>
-                  <p>Оценка</p>
-                </div>
+            <div class="l-inline">
+              <input type="checkbox" name="groupY" value="test2">
+              <p>Результаты теста №2</p>
+            </div>
+            <div class="l-inline">
+              <input type="checkbox" name="groupY" value="great">
+              <p>Оценка</p>
+            </div>
+          </div>
+          <div class="base-axis_z">
+            <label>Функция к данным</label>
+            <div class="l-inline">
+              <input type="radio" name="groupY" value="min">
+              <p>Миниимум</p>
+            </div>
+            <div class="l-inline">
+              <input type="radio" name="groupY" value="max">
+              <p>Максимум</p>
+            </div>
+            <div class="l-inline">
+              <input type="radio" name="groupY" value="sum">
+              <p>Сумма</p>
+            </div>
+            <div class="l-inline">
+              <input type="radio" name="groupY" value="middle">
+              <p>Среднее</p>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <form class="v2" action="visualizations-tables">
+        <fieldset>
+          <legend>Параметры отображения таблицы</legend>
+          <div class="l-visualization">
+            <label>Сортировка 1 по</label>
+            <select id="type" name="type">
+              <option value="ФИО">ФИО</option>
+              <option value="Пол">Пол</option>
+              <option value="Город">Город</option>
+              <option value="Возраст">Возраст</option>
+              <option value="Результаты теста 1">Результаты теста 1</option>
+              <option value="Результаты теста 2">Результаты теста 2</option>
+              <option value="Оценка">Оценка</option>
+            </select><br>
+            <label>Сортировка 2 по</label>
+            <select id="type" name="type">
+              <option value="ФИО">ФИО</option>
+              <option value="Пол">Пол</option>
+              <option value="Город">Город</option>
+              <option value="Возраст">Возраст</option>
+              <option value="Результаты теста 1">Результаты теста 1</option>
+              <option value="Результаты теста 2">Результаты теста 2</option>
+              <option value="Оценка">Оценка</option>
+            </select>
+            <div class="l-names">
+              <label>Какие поля отображать?</label>
+              <div class="l-inline">
+                <input type="checkbox" name="vis" value="ФИО" checked>
+                <p>ФИО</p>
+              </div>
+              <div class="l-inline">
+                <input type="checkbox" name="vis" value="Пол" checked>
+                <p>Пол</p>
+              </div>
+              <div class="l-inline">
+                <input type="checkbox" name="vis" value="Город" checked>
+                <p>Город</p>
+              </div>
+              <div class="l-inline">
+                <input type="checkbox" name="vis" value="Возраст" checked>
+                <p>Возраст</p>
+              </div>
+              <div class="l-inline">
+                <input type="checkbox" name="vis" value="Результаты теста 1" checked>
+                <p>Результаты теста 1</p>
+              </div>
+              <div class="l-inline">
+                <input type="checkbox" name="vis" value="Результаты теста 2" checked>
+                <p>Результаты теста 2</p>
+              </div>
+              <div class="l-inline">
+                <input type="checkbox" name="vis" value="Оценка" checked>
+                <p>Оценка</p>
               </div>
             </div>
-          </fieldset>
-        </form>
-      </div><img>
-    </div>
-  </article>
-  <footer> 
-          <h4>&copy; Пример html-страницы</h4>
-  </footer>
-  <script src="js/main.js"></script>
-  <script src="js/data.js"></script>
+          </div>
+        </fieldset>
+      </form>
+    </div><img>
+  </div>
+</article>
+<footer>
+  <h4>&copy; Пример html-страницы</h4>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/data.js"></script>
+
 </html>
