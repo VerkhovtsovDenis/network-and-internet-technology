@@ -28,7 +28,7 @@ class Draw {
 
         this.svg.transition()
             .duration(duration * 0.2)
-            .attr("transform", `translate(${-200}, ${nowY - initialY}) rotate(-${alpha/4}, ${nowX}, ${nowY})`)
+            .attr("transform", `translate(${-200}, ${nowY - initialY})rotate(-${alpha}, ${nowX-70}, ${nowY-80})`)
             .transition()
             .duration(duration * 0.3)
             .attr("transform", `translate(${-200 + 100}, ${nowY - initialY - 100}) rotate(-${alpha/2}, ${nowX}, ${nowY})`)
