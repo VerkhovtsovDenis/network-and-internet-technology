@@ -5,6 +5,7 @@ html
         title
         link(rel="stylesheet", href="css/bootstrap-reboot.min.css")
         link(rel="stylesheet", href="css/main.css")
+        script(src="http://d3js.org/d3.v7.min.js") 
 	
         include mixin.pug
         include var.pug
@@ -25,12 +26,12 @@ html
                         legend="Настройка визуализации Графика"
                         .l-visualization
                             label="Тип визуализации"
-                            select#type(name="type")
+                            select#visualizationType(name="type")
                                 each data in visualizationType
                                     option(value=data.value)=data.text
                         .l-visualization
                             label="Функция обработки"
-                            select#type(name="type")
+                            select#processingFunction(name="funkck")
                                 each data in func
                                     option(value=data.value)=data.text
 
@@ -39,7 +40,7 @@ html
                         .base-axis_y
                             +createFormAxis("Выбор оси Y", "checkbox", "groupY", axisY)
                         .l-visualization
-                            input(type="button", value="Показать график")
+                            input#draw(type="button", value="Показать график")
                 
                 form#filter
                     p.col-2
@@ -119,4 +120,5 @@ html
 
     script(src="js/main.js")
     script(src="js/data.js")
+    script(src="js/table.js") 
 

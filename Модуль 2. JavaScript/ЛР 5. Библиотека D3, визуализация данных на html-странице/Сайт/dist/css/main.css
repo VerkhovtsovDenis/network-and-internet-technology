@@ -157,6 +157,11 @@ footer {
     margin: 5px, 0px, 5px, 0px;
   }
 }
+svg {
+  height: 250;
+  border: 1px solid #000;
+  margin: 15;
+}
 article {
   margin-left: 10px;
   margin-right: 10px;
