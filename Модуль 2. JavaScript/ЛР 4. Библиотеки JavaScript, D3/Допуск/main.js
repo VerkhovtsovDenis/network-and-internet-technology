@@ -5,18 +5,9 @@ browsers = [
     { title: "Microsoft Edge", rate: 10.46 },
 ];
 
-add = [
-    { title: "Яндекс.Браузер", rate: 7.47 },
-    {
-        title: "Firefox",
-        rate: 2.2,
-    },
-];
 
-// Сортировка
-let compareByTitle = (a, b) => {
-    return a.rate < b.rate ? -1 : 1;
-};
+
+
 
 // Получаем таблицу для манипуляций
 let table = d3.select("table");
@@ -46,11 +37,47 @@ let head = table
     .text((d) => d);
 
 
+d3.select("input#addValue").on("click", () => {
 
+    add = [
+        { title: "Яндекс.Браузер", rate: 7.47 },
+        {
+            title: "Firefox",
+            rate: 2.2,
+        },
+    ];
+
+    array = [...browsers, ...add];
+
+    console.log("input#addValue")
+
+    let rows = table
+        .select("tbody")
+        .selectAll("tr")
+        .data(array)
+        .enter()
+        .append("tr");
+
+    cells = rows
+        .selectAll("td")
+        .data((d) => Object.values(d))
+        .enter()
+        .append("td")
+        .text((d) => d)
+
+    // Сортировка
+    let compareByTitle = (a, b) => {
+        return a.rate <= b.rate ? 1 : -1;
+    };
+
+    d3
+        .selectAll("tr")
+        .sort(compareByTitle)
+
+})
 
 
 // неверный код
-// browsers = [...browsers, ...add];
 // rows = table
 //     .select("tbody")
 //     .selectAll("tr")

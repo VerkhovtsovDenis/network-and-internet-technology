@@ -23,32 +23,75 @@ class Draw {
         const initialY = this.centerY;
         const nowY = this.nowY;
 
-        // this.svg.attr("transform", null)
         var alpha = d3.select('input#rotateValue')._groups[0][0].value
         if (alpha == "")
             alpha = 90
-        // this.svg.transition()
-        //     .duration(duration)
-        //     .attr("transform", `rotate(${this.angle + alpha})`)
-        // .attr("transform", `translate(${-200}, ${nowY - initialY}) rotate(-${alpha/4}, ${nowX}, ${nowY})`)
+
+
+        function createPathG(width, height) {
+            let data = [];
+            const padding = 100;
+            //начальное положение рисунка
+            let posX = 0;
+            let posY = 0 ;
+            const h = 5;
+            // координаты y - уменьшаются, x - постоянны
+
+            while (posX > -200) {
+                data.push({ x: posX, y: posY });
+                posX -= h;
+            }
+
+            while (posX < 0 && posY > -100) {
+                data.push({ x: posX, y: posY });
+                posX += h;
+                posY -= h
+            }
+
+            while (posX > -200 && posY >  -200) {
+                data.push({ x: posX, y: posY });
+                posX -= h;
+                posY -= h
+            }
+
+            while (posX < 0) {
+                data.push({ x: posX, y: posY });
+                posX += h;
+            }
+
+            return data
+        }
+
+
+        const dataPoints = createPathG(this.nowX, this.nowY);
+        const line = d3.line()
+            .x((d) => d.x)
+            .y((d) => d.y);
+        // создаем путь на основе массива точек
+
+        const path = this.svg.append('path')
+            .attr('d', line(dataPoints))
+            .attr('stroke', 'none')
+            .attr('fill', 'none');
+
+
+        function translateAlong(path) {
+            const length = path.getTotalLength();
+            return function () {
+                return function (t) {
+                    const { x, y } = path.getPointAtLength(t * length);
+                    return `translate(${x},${y})`;
+                }
+            }
+        }
+
+        console.log(this.svg)
 
         this.svg.transition()
-            .duration(duration * 0.2)
-            .attr("transform", `translate(${-200}, ${nowY - initialY})`)
-            .transition()
-            .duration(duration * 0.3)
-            .attr("transform", `translate(${-100}, ${nowY - initialY - 100})`)
-            .transition()
-            .duration(duration * 0.3)
-            .attr("transform", `translate(${-200}, ${nowY - initialY - 100 - 100})`)
-            .transition()
-            .duration(duration * 0.2)
-            .attr("transform", `translate(${0}, ${nowY - initialY - 100 - 100})`)
-            .on("end", () => {
-                this.nowY = this.nowY - 200;
-                this.angle += alpha
-            })
-        }
+            .ease(d3.easeLinear)
+            .duration(duration)
+            .attrTween('transform', translateAlong(path.node()))
+    }
 
 }
 
@@ -440,11 +483,12 @@ function preset(num) {
         var svgContainer = svg.append("g");
 
         lastFigure = new Fox(svgContainer, point.x, point.y)
-        lastFigure.draw()
+        // lastFigure.draw()
+        lastFigure.animate(2000)
 
     } else (
         console.log("Ошибка пресета")
     )
 }
 
-preset(1)
+// preset(1)
