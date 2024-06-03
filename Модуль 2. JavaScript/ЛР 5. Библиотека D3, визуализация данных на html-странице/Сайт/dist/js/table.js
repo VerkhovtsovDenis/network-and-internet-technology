@@ -49,36 +49,46 @@ function drawT() {
         }
     }
 
-
-    function getData(proc, x, y) {
-        // raiting
-        console.log(proc)
-
+    // выполняет группировку по столбцу
+    function createArrGraph(proc, x, y) {
         func = new functionPreprocessing(proc)
+        array_of_labelX = Object.groupBy(raiting, rait => rait[dict[x]])
+        data = []
 
+        for (key in array_of_labelX) {
+            this_value_for_labelX = []
 
-
-        arr = Object.groupBy(raiting, rait => rait[dict[x]])
-
-        for (key in arr) {
-            values = {
-
-            }
             y.forEach(element => {
                 // console.log(element, typeof element)
-                b = arr[key].map((obj) => obj[dict[element]])
-                values.add(element, func.function(b))
-                // console.log(key, )
+                array_of_raw_data = array_of_labelX[key].map((obj) => obj[dict[element]])
+                value_after_function = func.function(array_of_raw_data)
+                this_value_for_labelX.push(value_after_function)
             });
-            console.log(values)
+
+            obj = {
+                "labelX": key,
+                "values": this_value_for_labelX
+            }
+            data.push(obj)
         }
+        return data
+    }
+
+    function drawGraph(data, [visType, OX, OY]){
+        svg.select("*").remove()
+        const [scX, scY] = createAxis(arrGraph, isMin, isMax);
+
+        y.forEach(element => {
+            attr = (element === "test1")?   [data, csX, csY, 0, "blue"]:
+                                            [data, csX, csY, 1, "red"]
+            createChart(attr)                                
+        })
     }
 
 
     [vis, proc, x, y] = getSettings()
-    // console.log(vis, proc, x, y)
-    getData(proc, x, y)
-
+    data = createArrGraph(proc, x, y)
+    console.log(data)
 }
 
 

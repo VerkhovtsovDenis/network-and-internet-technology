@@ -162,6 +162,15 @@ svg {
   border: 1px solid #000;
   margin: 15;
 }
+svg text {
+  font: 8 Verdana;
+}
+svg path,
+line {
+  fill: none;
+  stroke: #333;
+  width: 1;
+}
 article {
   margin-left: 10px;
   margin-right: 10px;
