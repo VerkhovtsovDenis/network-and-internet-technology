@@ -149,17 +149,17 @@ function drawT() {
             .attr("transform", `translate(${marginX}, ${marginY})`)
     }
     function createBarChart(data, scaleX, scaleY, index, color) {
-        svg.selectAll(".bar")
+        svg.selectAll(".dot")
             .data(data)
             .enter()
             .append("rect")
-            .attr("class", "bar")
             .attr("x", d => scaleX(d.labelX))
             .attr("y", d => scaleY(d.values[index]))
             .attr("width", scaleX.bandwidth())
             .attr("height", d => height - scaleY(d.values[index]))
-            .attr("fill", color)
-            .attr("transform", `translate(${marginX}, ${marginY})`);
+            .attr("transform", `translate(${marginX}, ${marginY})`)
+            .style("fill", color)
+
     }
 
     function drawGraph(data, [visType, OX, OY]) {
