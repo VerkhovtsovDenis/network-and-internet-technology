@@ -33,13 +33,22 @@ const listObject = [
 const listImages = [
 	{
 		name: "ПИЛОТНАЯ ПЛОЩАДКА ИНТЦ «РУССКИЙ»",
-		src:  INTC,
+		src: INTC,
 		commissioning: "середина 2025 г."
 	},
 	{
 		name: "ИННОВАЦИОННО-ПРОИЗВОДСТВЕННЫЙ ЦЕНТР",
-		src:  IPC,
+		src: IPC,
 		commissioning: "май 2024 г."
 	},
 ]
-export default [listObject, listImages];
+
+const listTitles = {
+	main: "ИННОВАЦИОННЫЙ НАУЧНО-ТЕХНОЛОГИЧЕСКИЙ ЦЕНТР «РУССКИЙ»",
+	infrastructure: "ИНФРАСТРУКТУРА",
+	slider: "слайдер",
+	guessingGame: "игра",
+	inputForm:'Результаты игры',
+	info: "статистика"
+}
+export default [listObject, listImages, listTitles];
