@@ -16,10 +16,12 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 
-const logoList = [logoImageINTC, logoImageFEFU]
+const logoList = [logoImageFEFU, logoImageINTC]
 
 const listObject = arr[0];
 const listImages = arr[1];
+
+console.log(listImages)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

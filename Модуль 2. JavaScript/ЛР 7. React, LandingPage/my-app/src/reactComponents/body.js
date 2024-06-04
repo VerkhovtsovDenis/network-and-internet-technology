@@ -1,14 +1,15 @@
 
 import Infrastructure from './infrastructure.js'
-import Images from './images.js'
-
+import Slider from './slider.js'
+import GuessingGame from './guessingGame.js'
 
 function Body(props) {
     return (
         <div className="body">
             <h1>ИННОВАЦИОННЫЙ НАУЧНО-ТЕХНОЛОГИЧЕСКИЙ ЦЕНТР «РУССКИЙ»</h1>
             <Infrastructure objects={props.objects} map={props.map} />
-			<Images listImages={props.listImages} />
+			<Slider listImages={props.listImages} />
+            <GuessingGame />
 		</div>
     );
 }
