@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ЛР 5. Библиотека D3, визуализация данных на html-странице</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="http://d3js.org/d3.v7.min.js"></script>
+    <script src='data.js'></script>
+
+
+</head>
+
+<body>
+    <form action="visualisation">
+        <h3>
+            Список самых высоких зданий
+        </h3>
+
+        <div class="block">
+            <label>Значение по оси OX</label>
+            <p><input type="radio" name="radioOX" id="contry" checked><label for="contry">Страна</label></p>
+            <p><input type="radio" name="radioOX" id="year"><label for="year">Год</label></p>
+        </div>
+
+        <div class="block">
+            <label>Значение по оси OY</label>
+            <p><input type="checkbox" name="checkboxOY" id="maxHeight" checked><label for="maxHeight">Максимальная
+                    высота</label></p>
+            <p><input type="checkbox" name="checkboxOY" id="minHeight"><label for="minHeight">Минимальная высота</label>
+            </p>
+        </div>
+
+    </form>
+
+    <div id="graphics">
+        <button id="drawGraphics">Построить</button>
+
+    </div>
+
+    <!-- <svg>
+
+    </svg> -->
+
+    <div id="table">
+        <button id="showTable">Показать таблицу</button>
+    </div>
+    <!-- <table>
+        <thead>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table> -->
+
+</body>
+
+<script src='main.js'></script>
+
+</html>
