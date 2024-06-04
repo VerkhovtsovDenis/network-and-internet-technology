@@ -66,7 +66,6 @@ const Table = (props) => {
 
 	const changeActive = (event) => {
 		setActivePage(event.target.innerHTML)
-
 	}
 
 	const pages = arr.map((item, index) =>
