@@ -16,7 +16,7 @@ function Infrastructure(props) {
     };
 
     return (
-        <div className="infrastructure">
+        <div className="infrastructure block">
             <h3 onClick={press} className="pointer">
                 <span>ИНФРАСТРУКТУРА</span>
 				<span className="button-input">{isOpen?"+":"x"}</span>
