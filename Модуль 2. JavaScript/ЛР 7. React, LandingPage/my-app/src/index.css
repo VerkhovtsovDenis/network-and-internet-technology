@@ -132,12 +132,26 @@ h3 {
 
 
 div.imges{
-	/* display: flex; */
 }
 
-.img{
-	width: 55%;
+div.card img{
+	width: 25%;
 	background-repeat: no-repeat;
 	border: 1px solid red;
+    
 }
 
+.commissioning{
+    display: flex;
+    flex-direction: column;
+}
+
+.commissioning p, .commissioning h5{
+    margin: 0;
+    color: #329a5f;
+}
+
+.card p{
+    margin: 0;
+    font-size: 10px;
+}

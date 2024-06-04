@@ -8,7 +8,7 @@ function Body(props) {
         <div className="body">
             <h1>ИННОВАЦИОННЫЙ НАУЧНО-ТЕХНОЛОГИЧЕСКИЙ ЦЕНТР «РУССКИЙ»</h1>
             <Infrastructure objects={props.objects} map={props.map} />
-			<Images images={props.images} />
+			<Images listImages={props.listImages} />
 		</div>
     );
 }

@@ -6,7 +6,7 @@ function Infrastructure(props) {
 
     const cells = props.objects.map((item, id) => (
         <div id={id}>
-            <h4>{item.prof}</h4>
+            <h4>{item.name}</h4>
             <p>{item.discr}</p>
         </div>
     ));
