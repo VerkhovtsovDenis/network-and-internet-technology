@@ -126,6 +126,10 @@ h3 {
     padding-bottom: 8px;
 }
 
+.pointer{
+    text-transform: uppercase;
+}
+
 .pointer:hover {
     cursor: pointer;
 }
@@ -206,4 +210,44 @@ div.card img {
 div.comm h5, div.comm p{
     color: #329a5f;
     margin: 0px;
+}
+
+table{
+    padding-right: 5%;
+}
+
+th,
+td {
+	border: 1px solid silver;
+}
+
+th,td{
+
+	padding: 10px;
+}
+
+th{
+	background-color: silver;
+}
+
+.hide{
+	display: none;
+}
+
+span{
+	margin: 10px;
+}
+
+span:hover{
+	cursor: pointer;
+}
+
+span.active{
+	background-color: aqua;
+}
+
+.game, .info, .form{
+    margin-top: 15px;
+    margin-bottom: 20px;
+    margin-left: 10px;
 }
