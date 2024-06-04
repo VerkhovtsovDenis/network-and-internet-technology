@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import Title from './title';
 
 function Slider(props) {
-    const [currentIndex, setCurrentIndex] = useState(0);
+
     const [isOpen, setOpenClose] = React.useState(false);
+    const handleOpenChange = () =>{
+        setOpenClose(!isOpen)
+        console.log(isOpen)
+    }
+
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % props.listImages.length);
@@ -11,19 +18,9 @@ function Slider(props) {
         setCurrentIndex((prevIndex) => (prevIndex - 1) % props.listImages.length);
     };
 
-    const press = () => {
-        setOpenClose(!isOpen);
-    };
-
-
     return (
         <div>
-            <div className="block">
-                <h3 onClick={press} className="pointer">
-                    <span>СЛАЙДЕР</span>
-                    <span className="button-input">{isOpen ? "+" : "x"}</span>
-                </h3>
-            </div>
+            <Title name={props.name} onClick={handleOpenChange}/>
             {isOpen && (<div className="slider-container">
 
                 <div>
