@@ -52,7 +52,7 @@ class InputForm extends React.Component {
                                   {index + 1}) {value}
                               </p>
                           ))
-                        : ""}{" "}
+                        : ""}
                 </div>
             </form>
         );
